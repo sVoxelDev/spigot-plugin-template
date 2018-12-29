@@ -1,0 +1,7 @@
+# IntelliJ
+
+*.xml
+
+# Gradle
+
+.gradle

@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+}
+
+group 'de.tammo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name = 'Spigot'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+    maven {
+        name = 'Bungeecord-Chat'
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+ext {
+    mcVersion = '1.13.2'
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
+}
+
+task deployToBin (type: Copy, dependsOn: 'jar') {
+    from jar
+    into 'working/plugins'
+}
+
+task setupSpigot {
+    def server = new File('working/server.jar')
+
+    if (server.exists()) {
+        server.delete()
+    }
+
+    def url = getURL()
+    if (url.isEmpty()) {
+        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2]!')
+    }
+
+    new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
+}
+
+def getURL() {
+    def url
+    switch (mcVersion) {
+        case '1.8.8':
+            url = 'https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar'
+            break
+
+        case '1.12.2':
+            url = 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar'
+            break
+
+        case '1.13.2':
+            url = 'https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar'
+            break
+
+        default:
+            url = ''
+    }
+
+    return url
+}
+
