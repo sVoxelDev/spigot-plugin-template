@@ -6,7 +6,6 @@ buildscript {
     }
 }
 
-
 plugins {
     id 'java'
 }
@@ -22,25 +21,34 @@ compileJava.options.encoding = 'UTF-8'
 repositories {
     mavenCentral()
 
+    //Added spigot repository
     maven {
         name = 'Spigot'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
 
+    //Added md5's repository to add the missing Bungeecord-Chat api
     maven {
         name = 'Bungeecord-Chat'
         url = 'https://oss.sonatype.org/content/repositories/snapshots'
     }
+
+    //Add your repositories here
 }
 
 ext {
+    //Define one of the supported mc versions
     mcVersion = '1.13.2'
 }
 
 dependencies {
+    //Adds the spigot api to your plugin
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
+
+    //Add your dependencies here
 }
 
+//Exports you plugin to the plugin directory in your test server
 task deployToBin (type: Copy, dependsOn: 'jar') {
     def pluginConfig = new Yaml().load(new File('src/main/resources/plugin.yml').newInputStream())
     def pluginName = (String) pluginConfig['name']
@@ -53,6 +61,7 @@ task deployToBin (type: Copy, dependsOn: 'jar') {
     }
 }
 
+//Downloads the server jar
 task setupSpigot {
     def server = new File('working/server.jar')
 
@@ -60,16 +69,7 @@ task setupSpigot {
         server.delete()
     }
 
-    def url = getURL()
-    if (url.isEmpty()) {
-        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2]!')
-    }
-
-    new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
-}
-
-def getURL() {
-    def url
+    def url = ''
     switch (mcVersion) {
         case '1.8.8':
             url = 'https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar'
@@ -83,10 +83,11 @@ def getURL() {
             url = 'https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar'
             break
 
-        default:
-            url = ''
     }
 
-    return url
-}
+    if (url.isEmpty()) {
+        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2]!')
+    }
 
+    new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
+}
