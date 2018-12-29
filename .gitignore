@@ -1,7 +1,11 @@
 # IntelliJ
 
-*.xml
+.idea
 
 # Gradle
 
 .gradle
+
+# Server
+working/*
+!working/eula.txt
