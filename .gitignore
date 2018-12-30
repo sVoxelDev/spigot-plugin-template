@@ -1,7 +1,7 @@
 # IntelliJ
 
-/.idea/**
-!/.idea/runConfigurations/
+/.idea/dictionaries/
+/.idea/*.xml
 
 # Gradle
 
