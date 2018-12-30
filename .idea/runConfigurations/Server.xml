@@ -1,10 +1,12 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Server" type="JarApplication" factoryName="JAR Application">
     <option name="JAR_PATH" value="$PROJECT_DIR$/working/server.jar" />
-    <option name="VM_PARAMETERS" value="-Xmx1G -Xms1G -Dfile.encoding=UTF-8 -Dcom.mojang.eula.agree=true"/>
-    <option name="WORKING_DIRECTORY" value="C:\Users\tammo\Desktop\Spigot Template\working" />
+    <option name="VM_PARAMETERS" value="-Xmx1G -Xms1G -Dfile.encoding=UTF-8 -Dcom.mojang.eula.agree=true" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$\working" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-    <method v="2" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Deploy" run_configuration_type="GradleRunConfiguration" />
+    </method>
   </configuration>
 </component>
