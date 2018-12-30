@@ -48,8 +48,9 @@ dependencies {
     //Add your dependencies here
 }
 
-//Exports you plugin to the plugin directory in your test server
 task deployToBin (type: Copy, dependsOn: 'jar') {
+    description 'Exports you plugin to the plugin directory in your test server'
+    
     def pluginConfig = new Yaml().load(new File('src/main/resources/plugin.yml').newInputStream())
     def pluginName = (String) pluginConfig['name']
     def pluginVersion = (String) pluginConfig['version']
@@ -61,8 +62,9 @@ task deployToBin (type: Copy, dependsOn: 'jar') {
     }
 }
 
-//Downloads the server jar
 task setupSpigot {
+    description 'Downloads the server jar'
+    
     def server = new File('working/server.jar')
 
     if (server.exists()) {
