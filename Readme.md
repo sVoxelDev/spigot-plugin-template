@@ -2,7 +2,7 @@
 
 You can use this template to develop your own Spigot plugins with [Gradle](https://gradle.org/). 
 
-
+>**NOTE** The Setup is not up to date! I will make a new tutorial asap!
 
 ## Supported Versions
 
