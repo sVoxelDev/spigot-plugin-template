@@ -1,6 +1,7 @@
 # IntelliJ
 
 /.idea/dictionaries/
+/.idea/libraries/
 /.idea/*.xml
 *.iml
 
