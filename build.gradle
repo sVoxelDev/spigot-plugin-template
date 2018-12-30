@@ -1,22 +1,16 @@
-import org.yaml.snakeyaml.Yaml
-
-buildscript {
-    dependencies {
-        classpath 'org.yaml:snakeyaml:1.23'
-    }
-}
-
 plugins {
     id 'java'
 }
 
 group 'de.tammo'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 compileJava.options.encoding = 'UTF-8'
+
+archivesBaseName = project.property("pluginName")
 
 repositories {
     mavenCentral()
@@ -48,23 +42,27 @@ dependencies {
     //Add your dependencies here
 }
 
-task deployToBin (type: Copy, dependsOn: 'jar') {
-    description 'Exports you plugin to the plugin directory in your test server'
-    
-    def pluginConfig = new Yaml().load(new File('src/main/resources/plugin.yml').newInputStream())
-    def pluginName = (String) pluginConfig['name']
-    def pluginVersion = (String) pluginConfig['version']
-
-    from jar
-    into 'working/plugins'
-    rename { filename ->
-        filename.replace("Spigot Template", pluginName).replace(this.version.toString(), pluginVersion)
-    }
+processResources {
+    expand project.properties
 }
 
-task setupSpigot {
+task cleanPluginDirectory() {
+    description 'Cleans the plugin directory up'
+    delete 'working/plugins'
+}
+
+task deploy(type: Copy, dependsOn: ['cleanPluginDirectory', 'jar']) {
+    description 'Exports you plugin to the plugin directory in your test server'
+
+    def pluginFolder = project.property('pluginFolder').toString()
+
+    from jar
+    into pluginFolder.isEmpty() ? 'working/plugins' : pluginFolder
+}
+
+task setupServer {
     description 'Downloads the server jar'
-    
+
     def server = new File('working/server.jar')
 
     if (server.exists()) {

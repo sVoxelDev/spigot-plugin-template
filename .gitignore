@@ -1,11 +1,13 @@
 # IntelliJ
 
-.idea
+/.idea/**
+!/.idea/runConfigurations/
 
 # Gradle
 
 .gradle
+build/
 
 # Server
 working/*
-!working/eula.txt
+!working/server.properties

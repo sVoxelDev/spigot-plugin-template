@@ -1,6 +1,6 @@
-name: yourName
-version: 1.0
+name: ${name}
+version: ${version}
 
-author: you
+author: ${author}
 
-main: your.path.to.your.Main
+main: ${main}
