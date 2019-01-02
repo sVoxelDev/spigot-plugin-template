@@ -4,6 +4,10 @@ You can use this template to develop your own Spigot plugins with [Gradle](https
 
 >**NOTE** The Setup is not up to date! I will make a new tutorial asap!
 
+## Tutorial
+
+[![German](http://img.youtube.com/vi/9p0yHAW6OFE/0.jpg)](http://www.youtube.com/watch?v=9p0yHAW6OFE "German")
+
 ## Supported Versions
 
 | Version | Support |
