@@ -47,11 +47,13 @@ processResources {
 }
 
 task cleanPluginDirectory() {
+    group 'deploy'
     description 'Cleans the plugin directory up'
-    delete 'working/plugins'
+    delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
 }
 
 task deploy(type: Copy, dependsOn: ['cleanPluginDirectory', 'jar']) {
+    group 'deploy'
     description 'Exports you plugin to the plugin directory in your test server'
 
     def pluginFolder = project.property('pluginFolder').toString()
@@ -61,6 +63,7 @@ task deploy(type: Copy, dependsOn: ['cleanPluginDirectory', 'jar']) {
 }
 
 task setupServer {
+    group 'server'
     description 'Downloads the server jar'
 
     def server = new File('working/server.jar')
