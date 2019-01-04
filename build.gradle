@@ -46,7 +46,7 @@ processResources {
     expand project.properties
 }
 
-task cleanPluginDirectory() {
+task cleanPlugin() {
     group 'deploy'
     description 'Cleans the plugin directory up'
     delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
