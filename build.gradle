@@ -52,7 +52,7 @@ task cleanPlugin() {
     delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
 }
 
-task deploy(type: Copy, dependsOn: ['cleanPluginDirectory', 'jar']) {
+task deploy(type: Copy, dependsOn: ['cleanPlugin', 'jar']) {
     group 'deploy'
     description 'Exports you plugin to the plugin directory in your test server'
 
