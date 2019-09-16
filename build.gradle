@@ -48,6 +48,7 @@ shadowJar {
 }
 
 processResources {
+    project.properties.put("version", this.version)
     expand project.properties
 }
 
