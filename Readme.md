@@ -9,6 +9,7 @@ You can use this template to develop your own Spigot plugins with [Gradle](https
 | 1.8.8   | ✔️       |
 | 1.12.2  | ✔️       |
 | 1.13.2  | ✔️       |
+| 1.14.4  | ✔️       |
 
 
 ## Setup Template

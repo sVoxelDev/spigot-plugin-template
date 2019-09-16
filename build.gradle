@@ -33,7 +33,7 @@ repositories {
 
 ext {
     //Define one of the supported mc versions
-    mcVersion = '1.13.2'
+    mcVersion = '1.14.4'
 }
 
 dependencies {
@@ -92,6 +92,9 @@ task setupServer {
             url = 'https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar'
             break
 
+        case '1.14.4':
+            url = 'https://cdn.getbukkit.org/spigot/spigot-1.14.4.jar'
+            break
     }
 
     if (url.isEmpty()) {
