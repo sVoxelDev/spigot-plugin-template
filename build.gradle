@@ -1,10 +1,38 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
 }
 
-group 'de.tammo'
+group 'com.silthus'
 version '1.0'
+
+spigot {
+    authors = ['Silthus']
+    depends = ['']
+    apiVersion = '1.15'
+    load = STARTUP
+//    commands {
+//        give {
+//            aliases = ['i']
+//            description = 'Give command.'
+//            permission = 'test.foo'
+//            permissionMessage = 'You do not have permission!'
+//            usage = '/<command> [test|stop]'
+//        }
+//    }
+//    permissions {
+//        'test.foo' {
+//            description = 'Allows foo command'
+//            defaults = 'true'
+//        }
+//        'test.*' {
+//            description = 'Wildcard permission'
+//            defaults = 'op'
+//            children = ['test.foo': true]
+//        }
+//    }
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -15,25 +43,28 @@ archivesBaseName = project.property("pluginName")
 
 repositories {
     mavenCentral()
+    jcenter()
 
     //Added spigot repository
     maven {
         name = 'Spigot'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
     }
 
-    //Added md5's repository to add the missing Bungeecord-Chat api
-    maven {
-        name = 'Bungeecord-Chat'
-        url = 'https://oss.sonatype.org/content/repositories/snapshots'
-    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
 
     //Add your repositories here
 }
 
 ext {
     //Define one of the supported mc versions
-    mcVersion = '1.14.4'
+    mcVersion = '1.15.2'
 }
 
 dependencies {
@@ -41,6 +72,14 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
 
     //Add your dependencies here
+
+    //Test dependencies
+    testCompile "org.mockito:mockito-core:3.+"
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 shadowJar {
@@ -95,10 +134,13 @@ task setupServer {
         case '1.14.4':
             url = 'https://cdn.getbukkit.org/spigot/spigot-1.14.4.jar'
             break
+        case '1.15.2':
+            url = 'https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar'
+            break
     }
 
     if (url.isEmpty()) {
-        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2]!')
+        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2, 1.14.4, 1.15.2]!')
     }
 
     new URL(url).withInputStream { i -> server.withOutputStream { it << i } }

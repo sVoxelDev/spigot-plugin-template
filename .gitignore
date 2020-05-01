@@ -13,3 +13,4 @@ build/
 # Server
 working/*
 !working/server.properties
+/.idea/

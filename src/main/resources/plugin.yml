@@ -1,6 +1,4 @@
-name: ${name}
-version: ${version}
-
-author: ${author}
-
-main: ${main}
+main: com.silthus.template.TemplatePlugin
+name: TemplatePlugin
+version: 1.0.0
+api-version: 1.15
