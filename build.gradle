@@ -4,13 +4,13 @@ plugins {
     id 'java'
 }
 
-group 'com.silthus'
+group project.property("group")
 version '1.0'
 
 spigot {
-    authors = ['Silthus']
+    authors = [project.property("author")]
     depends = ['']
-    apiVersion = '1.15'
+    apiVersion = project.property("apiVersion")
     load = STARTUP
 //    commands {
 //        give {
@@ -64,7 +64,7 @@ repositories {
 
 ext {
     //Define one of the supported mc versions
-    mcVersion = '1.15.2'
+    mcVersion = project.property("mcVersion")
 }
 
 dependencies {
