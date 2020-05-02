@@ -36,7 +36,7 @@ jobs:
         restore-keys: ${{ runner.os }}-gradle
         
     - name: Build
-      run: ./gradlew build --stacktrace --info
+      run: ./gradlew build
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v1
