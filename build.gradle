@@ -75,11 +75,12 @@ dependencies {
 
     //Test dependencies
     testCompile "org.mockito:mockito-core:3.+"
+    testImplementation 'junit:junit:4.12'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit()
 }
 
 shadowJar {
@@ -96,6 +97,13 @@ task cleanPlugin() {
     description 'Cleans the plugin in the working directory up'
     delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
 }
+
+task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
+    from(new File(spigotPluginYaml.temporaryDir, "plugin.yml"))
+    into(sourceSets.main.resources.srcDirs[0])
+}
+
+tasks.test.dependsOn(copyPluginYaml)
 
 task deploy(type: Copy, dependsOn: ['cleanPlugin', 'jar']) {
     group 'deploy'
