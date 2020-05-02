@@ -9,7 +9,7 @@ version '1.0'
 
 spigot {
     authors = [project.property("author")]
-    depends = ['']
+//    depends = ['']
     apiVersion = project.property("apiVersion")
     load = STARTUP
 //    commands {
@@ -105,7 +105,7 @@ task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
 
 tasks.test.dependsOn(copyPluginYaml)
 
-task deploy(type: Copy, dependsOn: ['cleanPlugin', 'jar']) {
+task deploy(type: Copy, dependsOn: ['cleanPlugin', 'copyPluginYaml', 'jar']) {
     group 'deploy'
     description 'Exports you plugin to the plugin directory in your test server'
 

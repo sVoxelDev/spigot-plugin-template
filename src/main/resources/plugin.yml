@@ -1,7 +1,6 @@
 main: com.silthus.template.TemplatePlugin
-name: Spigot Template
+name: SpigotTemplate
 version: '1.0'
 authors: [Silthus]
 api-version: '1.15'
 load: STARTUP
-depend: ['']
