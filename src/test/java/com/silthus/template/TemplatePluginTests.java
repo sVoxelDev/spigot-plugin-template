@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.io.File;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TemplatePluginTests {
 
@@ -19,7 +21,7 @@ public class TemplatePluginTests {
     public void setUp()
     {
         server = MockBukkit.mock();
-        plugin = MockBukkit.load(TemplatePlugin.class);
+        plugin = MockBukkit.loadWith(TemplatePlugin.class, new File("build/tmp/spigotPluginYaml/plugin.yml"));
 
     }
 

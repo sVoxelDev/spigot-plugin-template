@@ -37,7 +37,12 @@ spigot {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-compileJava.options.encoding = 'UTF-8'
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
 
 archivesBaseName = project.property("pluginName")
 
@@ -60,11 +65,13 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
 
     //Add your repositories here
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
 }
 
 ext {
     //Define one of the supported mc versions
     mcVersion = project.property("mcVersion")
+    packageName = project.property("packageName")
 }
 
 dependencies {
@@ -72,6 +79,7 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
 
     //Add your dependencies here
+    compile "co.aikar:acf-bukkit:0.5.0-SNAPSHOT"
 
     //Test dependencies
     testCompile "org.mockito:mockito-core:3.+"
@@ -85,6 +93,8 @@ test {
 
 shadowJar {
     classifier = ''
+    relocate 'co.aikar.commands', "${packageName}.acf"
+    relocate 'co.aikar.locales', "${packageName}.locales"
 }
 
 processResources {
@@ -103,9 +113,7 @@ task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
     into(sourceSets.main.resources.srcDirs[0])
 }
 
-tasks.test.dependsOn(copyPluginYaml)
-
-task deploy(type: Copy, dependsOn: ['cleanPlugin', 'copyPluginYaml', 'jar']) {
+task deploy(type: Copy, dependsOn: ['cleanPlugin', 'jar']) {
     group 'deploy'
     description 'Exports you plugin to the plugin directory in your test server'
 
