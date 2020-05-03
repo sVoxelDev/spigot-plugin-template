@@ -1,7 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
+    id 'jacoco'
+    id 'net.ltgt.apt-eclipse' version '0.21'
+    id 'com.diffplug.gradle.spotless' version '3.28.1'
+    id 'net.ltgt.errorprone' version '1.1.1'
+    id 'se.patrikerdes.use-latest-versions' version '0.2.13'
+    id 'com.github.ben-manes.versions' version '0.28.0'
+}
+
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/spotless.gradle"
+apply from: "$rootDir/gradle/errorprone.gradle"
+apply from: "$rootDir/gradle/publish.gradle"
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+ext {
+    //Define one of the supported mc versions
+    mcVersion = project.property("mcVersion")
+    packageName = project.property("packageName")
+    junitVersion = '5.6.2'
+    guavaVersion = '29.0-jre'
+    immutablesVersion = '2.8.7'
+    errorproneVersion = '2.3.4'
 }
 
 group project.property("group")
@@ -14,8 +44,7 @@ spigot {
     //    depends = ['']
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+
 
 compileJava {
     options.encoding = 'UTF-8'
@@ -48,15 +77,11 @@ repositories {
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
 }
 
-ext {
-    //Define one of the supported mc versions
-    mcVersion = project.property("mcVersion")
-    packageName = project.property("packageName")
-}
-
 dependencies {
     //Adds the spigot api to your plugin
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
+    compileOnly "org.immutables:value:${immutablesVersion}:annotations"
+    annotationProcessor "org.immutables:value:${immutablesVersion}"
 
     //Add your dependencies here
     compile "co.aikar:acf-bukkit:0.5.0-SNAPSHOT"
@@ -65,6 +90,7 @@ dependencies {
     testCompile "org.mockito:mockito-core:3.+"
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
+    errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
 }
 
 test {
@@ -93,7 +119,11 @@ task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
     into(sourceSets.main.resources.srcDirs[0])
 }
 
-task deploy(type: Copy, dependsOn: ['cleanPlugin', 'jar']) {
+task deploy(type: Copy, dependsOn: [
+    'cleanPlugin',
+    'spotlessApply',
+    'jar'
+]) {
     group 'deploy'
     description 'Exports you plugin to the plugin directory in your test server'
 
@@ -141,3 +171,5 @@ task setupServer {
 
     new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
 }
+
+defaultTasks 'spotlessApply', 'build', 'deploy'

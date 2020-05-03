@@ -1,0 +1,12 @@
+spotless {
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+    groovyGradle {
+        target '**/*.gradle'
+        greclipse()
+        indentWithSpaces()
+        paddedCell()
+    }
+}
