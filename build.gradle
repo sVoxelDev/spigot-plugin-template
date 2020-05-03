@@ -35,7 +35,6 @@ ext {
 }
 
 group project.property("group")
-version '1.0'
 
 spigot {
     authors = [project.property("author")]
