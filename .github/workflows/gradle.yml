@@ -11,18 +11,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Set up Node.js v12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Cache Gradle
         id: cache-gradle
         uses: actions/cache@v1
