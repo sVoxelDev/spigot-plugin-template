@@ -30,4 +30,11 @@ publishing {
             from components.java
         }
     }
+    repositories {
+        maven {
+            def releasesRepoUrl = "${artifactory_contextUrl}/libs-release-local"
+            def snapshotsRepoUrl = "$buildDir/repos/libs-snapshot-local"
+            url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+        }
+    }
 }
