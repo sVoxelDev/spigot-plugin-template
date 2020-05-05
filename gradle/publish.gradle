@@ -12,6 +12,11 @@ def getHash() {
     return process.text.trim()
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 jar {
     manifest {
         attributes (
@@ -25,16 +30,31 @@ jar {
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            groupId 'net.silthus'
+        mavenJava(MavenPublication) {
+            groupId = group
+            artifactId = packageName
             from components.java
         }
     }
     repositories {
         maven {
             def releasesRepoUrl = "${artifactory_contextUrl}/libs-release-local"
-            def snapshotsRepoUrl = "$buildDir/repos/libs-snapshot-local"
-            url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+            def snapshotsRepoUrl = "${artifactory_contextUrl}/libs-snapshot-local"
+            if (version.endsWith('SNAPSHOT')) {
+                url = snapshotsRepoUrl
+            } else {
+                url = releasesRepoUrl
+            }
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
         }
+    }
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
     }
 }

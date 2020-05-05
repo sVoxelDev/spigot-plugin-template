@@ -33,7 +33,6 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: Plugin
           path: build/libs
 
       - name: Upload Test Report

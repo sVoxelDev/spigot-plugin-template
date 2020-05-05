@@ -3,10 +3,6 @@ buildscript {
         jcenter()
         mavenCentral()
     }
-    dependencies {
-        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
-    }
 }
 
 plugins {
@@ -14,7 +10,6 @@ plugins {
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
     id 'jacoco'
-    id "com.jfrog.artifactory" version '4.15.2'
     id 'com.diffplug.gradle.spotless' version '3.28.1'
 }
 
@@ -42,10 +37,6 @@ spigot {
     apiVersion = project.property("apiVersion")
     load = STARTUP
     //    depends = ['']
-}
-
-allprojects {
-    apply plugin: "com.jfrog.artifactory"
 }
 
 compileJava {
@@ -92,28 +83,6 @@ dependencies {
     testCompile "org.mockito:mockito-core:3.+"
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
-}
-
-artifactory {
-    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
-    publish {
-        repository {
-            repoKey = 'libs-snapshot-local'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'libs-snapshot'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-
-        }
-    }
 }
 
 test {
