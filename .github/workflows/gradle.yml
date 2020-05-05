@@ -44,7 +44,7 @@ jobs:
 
       - name: Release
         run: |
-          yarn install
-          yarn semantic-release
+          npm install
+          npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

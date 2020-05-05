@@ -14,7 +14,7 @@
     "semantic-release": "17.0.7"
   },
   "scripts": {
-    "semantic-release": "semantic-release"
+    "semantic-release": "npx semantic-release"
   },
   "husky": {
     "hooks": {
