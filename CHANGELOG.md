@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mcSilthus/spigot-plugin-template/compare/v1.0.0...v1.0.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* **release:** run gradle-release before github ([a3ef1fa](https://github.com/mcSilthus/spigot-plugin-template/commit/a3ef1fa22441879e8de6d27a8af0cd5f2ad581f9))
+
 # 1.0.0 (2020-05-05)
 
 
