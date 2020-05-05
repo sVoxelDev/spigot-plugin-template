@@ -5,6 +5,10 @@
 
 # Workspace Setup
 
+> This project is part of a pay what you want open source initiative.
+>
+> [Find out more on the Spigot forums!](https://www.spigotmc.org/threads/open-small-to-medium-plugin-development-pay-what-you-want-8-years-experience-high-quality.435578/)
+
 You can use this template to develop your own Spigot plugins with [Gradle](https://gradle.org/).
 
 ## Supported Versions
@@ -21,13 +25,15 @@ You can use this template to develop your own Spigot plugins with [Gradle](https
 
 > **Note** This setup is actual only for IntelliJ
 
-- Create a new Github project using this template
-- Clone this repository and open it in IntelliJ
-- Import the project with gradle
+- Create a new Github project using this template.
+- Add the `ARTIFACTORY_USER` and `ARTIFACTORY_PASSWORD` secrets to your Github project.
+- Clone this repository and open it in IntelliJ.
+- Import the project with gradle.
 - Go into the gradle.properties file and update the variables.
+- Update this `README` with your links and project information.
 - Then execute the **setupServer** run configuration and the template will download the server jar file.
 
-Then you can start coding :)
+Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting any pull requests or opening issues.
 
 ## Deploy Task
 

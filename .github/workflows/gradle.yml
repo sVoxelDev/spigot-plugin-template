@@ -31,12 +31,12 @@ jobs:
       - name: Build
         run: ./gradlew -Partifactory_user=${{ secrets.ARTIFACTORY_USER }} -Partifactory_password=${{ secrets.ARTIFACTORY_PASSWORD }}
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           path: build/libs
 
       - name: Upload Test Report
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         if: always()
         with:
           name: build reports
