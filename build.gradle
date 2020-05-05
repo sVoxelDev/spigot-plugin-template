@@ -80,7 +80,7 @@ dependencies {
     //Add your dependencies here
 
     //Test dependencies
-    testCompile "org.mockito:mockito-core:3.+"
+    testImplementation "org.mockito:mockito-core:3.+"
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
 }

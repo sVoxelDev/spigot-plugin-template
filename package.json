@@ -41,8 +41,7 @@
         {
           "assets": [
             {
-              "path": "build/libs/*.jar",
-              "label": "Plugin"
+              "path": "build/libs/*.jar"
             }
           ]
         }
@@ -58,5 +57,8 @@
         }
       ]
     ]
+  },
+  "engines": {
+    "node": ">=12.14"
   }
 }

@@ -11,17 +11,24 @@ jobs:
         with:
           java-version: 11
 
-      - name: Set up NodeJS
+      - name: Set up Node.js v12.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: "12.x"
 
-      - name: Cache Gradle packages
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache Gradle
+        id: cache-gradle
         uses: actions/cache@v1
         with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle
 
       - uses: actions/checkout@v1
 
@@ -45,6 +52,6 @@ jobs:
       - name: Release
         run: |
           npm install
-          npx semantic-release
+          npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
