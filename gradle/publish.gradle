@@ -41,6 +41,10 @@ publishing {
             def githubOwner, githubRepo = repo != null ? repo.toLowerCase().tokenize("/") : "silthus/template"
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/${githubOwner}")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
