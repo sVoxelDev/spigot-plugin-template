@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.0...v1.1.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* **release:** add github credentials ([c6387b5](https://github.com/Silthus/spigot-plugin-template/commit/c6387b57e79260a55423c5a824353200c5ad1bbd))
+
 # [1.1.0](https://github.com/mcSilthus/spigot-plugin-template/compare/v1.0.1...v1.1.0) (2020-05-08)
 
 
