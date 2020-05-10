@@ -10,11 +10,9 @@ plugins {
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
     id 'jacoco'
-    id 'com.diffplug.gradle.spotless' version '3.28.1'
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
-apply from: "$rootDir/gradle/spotless.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
 
 sourceCompatibility = 11
@@ -118,7 +116,6 @@ task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
 
 task deploy(type: Copy, dependsOn: [
     'cleanPlugin',
-    'spotlessApply',
     'jar'
 ]) {
     group 'deploy'
@@ -169,4 +166,4 @@ task setupServer {
     new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
 }
 
-defaultTasks 'spotlessApply', 'build', 'deploy'
+defaultTasks 'build', 'deploy'
