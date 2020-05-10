@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.0...v1.1.1) (2020-05-10)
+
+
+### Bug Fixes
+
+* **build:** cache yarn.lock instead of package-lock ([c067aab](https://github.com/Silthus/spigot-plugin-template/commit/c067aab502cb076253232e20533449336e54fa15))
+* **lint:** remove spotless linting ([cb2f8d1](https://github.com/Silthus/spigot-plugin-template/commit/cb2f8d1e70081e414e6fbe76479d7a2387108070))
+
 # [1.1.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.0.1...v1.1.0) (2020-05-09)
 
 
