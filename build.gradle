@@ -94,11 +94,20 @@ test {
     useJUnit()
 }
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    ignoreFailures = true
+}
+
 shadowJar {
     classifier = ''
-    relocate 'co.aikar.commands', "${packageName}.acf"
-    relocate 'co.aikar.locales', "${packageName}.locales"
 }
+
+tasks.build.dependsOn(shadowJar)
+tasks.publish.dependsOn(shadowJar)
 
 processResources {
     project.properties.put("version", this.version)

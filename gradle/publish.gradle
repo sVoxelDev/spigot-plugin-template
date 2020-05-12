@@ -31,7 +31,6 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId = group
             from components.java
         }
     }
