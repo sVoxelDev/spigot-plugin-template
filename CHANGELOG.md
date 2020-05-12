@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.1...v1.2.0) (2020-05-12)
+
+
+### Bug Fixes
+
+* **build:** include dependencies in the shadow jar ([803099b](https://github.com/Silthus/spigot-plugin-template/commit/803099bdf08c8a9a465d9d1323e3e65e1d498b7a))
+
+
+### Features
+
+* **build:** replace artifactory with github packages ([f83a08a](https://github.com/Silthus/spigot-plugin-template/commit/f83a08a3507345e234105cb46a1bcf0b9950816a))
+* **build:** target JDK 1.8 ([0cc380c](https://github.com/Silthus/spigot-plugin-template/commit/0cc380cc335780ebba57f46ad035badff6cfe299))
+
 ## [1.1.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.0...v1.1.1) (2020-05-10)
 
 
