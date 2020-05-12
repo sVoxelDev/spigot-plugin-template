@@ -61,8 +61,10 @@ repositories {
         }
     }
 
-    maven { url = 'https://artifactory.silthus.net/artifactory/libs-release' }
-    maven { url = 'https://artifactory.silthus.net/artifactory/libs-snapshot' }
+    maven {
+        name = 'github'
+        url = 'https://maven.pkg.github.com/Silthus'
+    }
 
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }

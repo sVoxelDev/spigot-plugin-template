@@ -24,7 +24,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build
-        run: ./gradlew -Partifactory_user=${{ secrets.ARTIFACTORY_USER }} -Partifactory_password=${{ secrets.ARTIFACTORY_PASSWORD }}
+        run: ./gradlew
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
