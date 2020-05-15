@@ -10,6 +10,7 @@ plugins {
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
     id 'jacoco'
+    id "org.hibernate.build.maven-repo-auth" version "3.0.2"
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -91,7 +92,11 @@ dependencies {
 }
 
 test {
-    useJUnit()
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    ignoreFailures = true
 }
 
 test {
@@ -104,6 +109,11 @@ test {
 
 shadowJar {
     classifier = ''
+//    dependencies {
+//        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
+//    }
+//    relocate 'co.aikar.commands', "${packageName}.acf"
+//    relocate 'co.aikar.locales', "${packageName}.locales"
 }
 
 tasks.build.dependsOn(shadowJar)
@@ -117,7 +127,7 @@ processResources {
 task cleanPlugin() {
     group 'deploy'
     description 'Cleans the plugin in the working directory up'
-    delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
+    delete 'working/plugins/' + project.property("pluginName") + '*.jar'
 }
 
 task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
