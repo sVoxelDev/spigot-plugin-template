@@ -36,8 +36,10 @@ publishing {
     }
     repositories {
         maven {
+            def repo = project.findProperty("GITHUB_REPOSITORY")?: System.getenv("GITHUB_REPOSITORY")
+            def githubOwner, repository = repo != null ? repo.toLowerCase().tokenize("/") : project.findProperty("author")
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${project.findProperty("GITHUB_REPOSITORY")?: System.getenv("GITHUB_REPOSITORY")}")
+            url = uri("https://maven.pkg.github.com/${githubOwner}")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")

@@ -10,7 +10,6 @@ plugins {
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
     id 'jacoco'
-    id "org.hibernate.build.maven-repo-auth" version "3.0.2"
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -23,10 +22,6 @@ ext {
     //Define one of the supported mc versions
     mcVersion = project.property("mcVersion")
     packageName = project.property("packageName")
-    junitVersion = '5.6.2'
-    guavaVersion = '29.0-jre'
-    immutablesVersion = '2.8.7'
-    errorproneVersion = '2.3.4'
 }
 
 group project.property("group")
@@ -65,6 +60,10 @@ repositories {
     maven {
         name = 'github'
         url = 'https://maven.pkg.github.com/Silthus'
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
     }
 
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
