@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.2.0...v1.3.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **publish:** revert publishing to project namespace ([4f2aa72](https://github.com/Silthus/spigot-plugin-template/commit/4f2aa72fd4aeb065fce5db6b8a137d9aa2e2c148))
+* **tests:** output jacoco html report for intellij coverage ([7f94567](https://github.com/Silthus/spigot-plugin-template/commit/7f945670a9d63265be695d9adb21dbf0f24ead2b))
+
+
+### Features
+
+* **publish:** publish github package to user namespace ([ac38c81](https://github.com/Silthus/spigot-plugin-template/commit/ac38c811219942159901e5a177f71c9bb2e1d22e))
+
 # [1.2.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.1...v1.2.0) (2020-05-12)
 
 
