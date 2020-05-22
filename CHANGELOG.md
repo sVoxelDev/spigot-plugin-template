@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.0...v1.3.1) (2020-05-22)
+
+
+### Bug Fixes
+
+* **release:** update semantic-release/GitHub ([aefa8c1](https://github.com/Silthus/spigot-plugin-template/commit/aefa8c1c9e250dc4df9e1707c096bf7e91b8b79d))
+
 # [1.3.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.2.0...v1.3.0) (2020-05-20)
 
 
