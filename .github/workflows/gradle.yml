@@ -65,7 +65,9 @@ jobs:
         id: cache-node 
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Cache Gradle
         id: cache-gradle
