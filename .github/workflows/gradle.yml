@@ -61,11 +61,11 @@ jobs:
           node-version: "12.x"
 
       - uses: actions/cache@v1
+        name: Cache Node
+        id: cache-node 
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: ${{ runner.os }}-node
 
       - name: Cache Gradle
         id: cache-gradle
