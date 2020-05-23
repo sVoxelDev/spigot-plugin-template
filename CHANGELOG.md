@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.3...v1.3.4) (2020-05-23)
+
+
+### Bug Fixes
+
+* **test:** copy plugin.yml to test resources ([54893f2](https://github.com/Silthus/spigot-plugin-template/commit/54893f201d37958e2fc1b07dfb403014d09ff1c0))
+
 ## [1.3.3](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.2...v1.3.3) (2020-05-23)
 
 
