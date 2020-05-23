@@ -1,3 +1,15 @@
+## [1.3.5](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.4...v1.3.5) (2020-05-23)
+
+
+### Bug Fixes
+
+* **build:** hash yarn.lock for cache ([307b744](https://github.com/Silthus/spigot-plugin-template/commit/307b744c7a15fe940d1d8e967e44c93a3063cc67))
+
+
+### Reverts
+
+* publish shadowJar artifact  ([6e869fc](https://github.com/Silthus/spigot-plugin-template/commit/6e869fcc11de056faad831f215c80538c112435b))
+
 ## [1.3.4](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.3...v1.3.4) (2020-05-23)
 
 
