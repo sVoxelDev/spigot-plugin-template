@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.1...v1.3.2) (2020-05-23)
+
+
+### Bug Fixes
+
+* **build:** cache node correctly ([20bb9e3](https://github.com/Silthus/spigot-plugin-template/commit/20bb9e349a16efb5712c037b1786358447bfdda1))
+
 ## [1.3.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.0...v1.3.1) (2020-05-22)
 
 
