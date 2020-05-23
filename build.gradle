@@ -91,22 +91,6 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 
-test {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
-    ignoreFailures = true
-}
-
-test {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
-    ignoreFailures = true
-}
-
 shadowJar {
     classifier = ''
 //    dependencies {
@@ -118,6 +102,14 @@ shadowJar {
 
 tasks.build.dependsOn(shadowJar)
 tasks.publish.dependsOn(shadowJar)
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    ignoreFailures = false
+}
 
 processResources {
     project.properties.put("version", this.version)
@@ -132,8 +124,10 @@ task cleanPlugin() {
 
 task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
     from(new File(spigotPluginYaml.temporaryDir, "plugin.yml"))
-    into(sourceSets.main.resources.srcDirs[0])
+    into(sourceSets.test.resources.srcDirs[0])
 }
+
+tasks.test.dependsOn(copyPluginYaml)
 
 task deploy(type: Copy, dependsOn: [
     'cleanPlugin',
