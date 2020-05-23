@@ -1,3 +1,11 @@
+## [1.3.3](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.2...v1.3.3) (2020-05-23)
+
+
+### Bug Fixes
+
+* **plugin:** use pluginName property in plugin.yml ([094c57b](https://github.com/Silthus/spigot-plugin-template/commit/094c57b3730178470b60b7038950be8e1ced6c51))
+* **publish:** publish shadow jar artifact ([64968ce](https://github.com/Silthus/spigot-plugin-template/commit/64968cefa69d10fea0f3a26b2d3da7abc1e627d5))
+
 ## [1.3.2](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.1...v1.3.2) (2020-05-23)
 
 
