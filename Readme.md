@@ -12,11 +12,24 @@
 
 You can use this template to develop your own Spigot plugins with [Gradle](https://gradle.org/).
 
-## Supported Versions
+## Features
 
-| Version | Support |
-| ------- | :-----: |
-| 1.15.2  |   ✔️    |
+The template or better boilerplate comes with a lot of features that are useful if you want to develop high quality plugins. However you don't need to use all of them, you can simply remove the features you don't need.
+
+- Ready to use **gradle** project with lots of utility tasks
+- Automatic **generation of `plugin.yaml`** based of project properties 
+- Integrated **Spigot test server** with a one click build, copy plugin and start debugging in IntelliJ task 
+- **ShadowJAR plugin and task** to easily ship your needed dependencies with your plugin
+- Example **unit test setup** including MockBukkit and AssertJ
+- **Code coverage** report including an upload task to codecov 
+- Fully integrated **semantic-release** pipeline 
+- Automatic **changelog generation** based on commit messages
+- **Github actions workflow** for build and release
+- Publishing of **maven artifacts** to GitHub packages
+  > no more need for self hosted nexus or artifactory server
+- GitHub **issue templates** for bug and feature requests
+- Contributing and Code of Conduct **guidelines**
+- Nice **badges** to show of your project
 
 ## Setup Template
 
