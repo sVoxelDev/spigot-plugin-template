@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.5...v1.3.6) (2020-05-24)
+
+
+### Bug Fixes
+
+* **release:** override GitHub API url with GH_URL ([43669f7](https://github.com/Silthus/spigot-plugin-template/commit/43669f730eee93f4c62a9bae1d0666a9513a8046))
+
 ## [1.3.5](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.4...v1.3.5) (2020-05-23)
 
 
