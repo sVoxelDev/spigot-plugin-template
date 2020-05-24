@@ -1,5 +1,5 @@
 name: Build
-on: [push, pull_request]
+on: [push]
 jobs:
   build:
 
@@ -46,6 +46,7 @@ jobs:
 
   release:
     needs: [build]
+    if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-18.04
 
@@ -59,15 +60,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-
-      - uses: actions/cache@v1
-        name: Cache Node
-        id: cache-node 
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
       - name: Cache Gradle
         id: cache-gradle
@@ -87,3 +79,4 @@ jobs:
           yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_URL: "https://api.github.com/"
