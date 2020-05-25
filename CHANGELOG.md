@@ -1,3 +1,12 @@
+## [1.3.7](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.6...v1.3.7) (2020-05-25)
+
+
+### Bug Fixes
+
+* **build:** copy plugin to server based on rootProject.rootDir ([1315050](https://github.com/Silthus/spigot-plugin-template/commit/1315050ac27aa8740672a773ad6fc9fa14ee180e))
+* **git:** ignore automatic generated plugin.yml ([4cccd5b](https://github.com/Silthus/spigot-plugin-template/commit/4cccd5b1197311dd456bb742c2ec5cb06dcadb8f))
+* **plugin:** set correct spigradle plugin name ([a7d5af5](https://github.com/Silthus/spigot-plugin-template/commit/a7d5af590f8b8b06bf5350bff8e25059cdc4f7d6))
+
 ## [1.3.6](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.5...v1.3.6) (2020-05-24)
 
 
