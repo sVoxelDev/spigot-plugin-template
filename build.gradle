@@ -111,7 +111,7 @@ processResources {
 task cleanPlugin() {
     group 'deploy'
     description 'Cleans the plugin in the working directory up'
-    delete 'working/plugins/' + project.property("pluginName") + '*.jar'
+    delete "${rootProject.rootDir}/working/plugins/" + project.property("pluginName") + '*.jar'
 }
 
 task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
@@ -131,14 +131,14 @@ task deploy(type: Copy, dependsOn: [
     def pluginFolder = project.property('pluginFolder').toString()
 
     from shadowJar
-    into pluginFolder.isEmpty() ? 'working/plugins' : pluginFolder
+    into pluginFolder.isEmpty() ? "${rootProject.rootDir}/working/plugins" : pluginFolder
 }
 
 task setupServer {
     group 'server'
     description 'Downloads the server jar'
 
-    def server = new File('working/server.jar')
+    def server = new File("${rootProject.rootDir}/working/server.jar")
 
     if (server.exists()) {
         server.delete()
