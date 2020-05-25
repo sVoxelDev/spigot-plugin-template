@@ -7,7 +7,7 @@ buildscript {
 
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
-    id 'kr.entree.spigradle' version '1.2.1'
+    id 'kr.entree.spigradle' version '1.2.4'
     id 'java'
     id 'jacoco'
 }
@@ -47,16 +47,11 @@ repositories {
     mavenCentral()
     jcenter()
 
-    //Added spigot repository
-    maven {
-        name = 'Spigot'
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-
-        content {
-            includeGroup 'org.bukkit'
-            includeGroup 'org.spigotmc'
-        }
-    }
+    spigot()
+//    bungeecord()
+//    paper()
+//    protocolLib()
+//    enginehub()
 
     maven {
         name = 'github'
@@ -67,18 +62,15 @@ repositories {
         }
     }
 
-    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
-
     //Add your repositories here
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly lombok()
+    annotationProcessor lombok()
 
-    compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
+    compileOnly spigot(mcVersion)
 
     //Add dependencies here
 
@@ -87,8 +79,8 @@ dependencies {
     testImplementation "org.mockito:mockito-core:3.+"
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
     testImplementation 'org.assertj:assertj-core:3.16.1'
-    testImplementation 'org.projectlombok:lombok:1.18.12'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testImplementation lombok()
+    testAnnotationProcessor lombok()
 }
 
 shadowJar {
