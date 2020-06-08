@@ -1,4 +1,8 @@
 [![Build Status](https://github.com/Silthus/spigot-plugin-template/workflows/Build/badge.svg)](../../actions?query=workflow%3ABuild)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Silthus/spigot-plugin-template?include_prereleases&label=release)](../../releases)
+![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/79903)
+[![Spiget Downloads](https://img.shields.io/spiget/downloads/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
+[![Spiget Rating](https://img.shields.io/spiget/rating/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
 [![codecov](https://codecov.io/gh/Silthus/spigot-plugin-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Silthus/spigot-plugin-template)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Silthus/spigot-plugin-template?include_prereleases&label=release)](../../releases)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -16,20 +20,20 @@ You can use this template to develop your own Spigot plugins with [Gradle](https
 
 The template or better boilerplate comes with a lot of features that are useful if you want to develop high quality plugins. However you don't need to use all of them, you can simply remove the features you don't need.
 
-- Ready to use **gradle** project with lots of utility tasks
-- Automatic **generation of `plugin.yaml`** based of project properties 
-- Integrated **Spigot test server** with a one click build, copy plugin and start debugging in IntelliJ task 
-- **ShadowJAR plugin and task** to easily ship your needed dependencies with your plugin
-- Example **unit test setup** including MockBukkit and AssertJ
-- **Code coverage** report including an upload task to codecov 
-- Fully integrated **semantic-release** pipeline 
-- Automatic **changelog generation** based on commit messages
-- **Github actions workflow** for build and release
-- Publishing of **maven artifacts** to GitHub packages
+- Ready to use [**Gradle**](https://gradle.org/) project with lots of utility tasks
+- Automatic **generation of `plugin.yaml`** based of project properties with [SpiGradle](https://github.com/EntryPointKR/Spigradle/)
+- Integrated [**Spigot test server**](https://github.com/Tammo0987/Spigot-Workspace-Template) with a one click build, copy plugin and start debugging in IntelliJ task 
+- [**Gradle shadow plugin**](https://imperceptiblethoughts.com/shadow/) to easily ship your needed dependencies with your plugin
+- **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** test setup including [MockBukkit](https://github.com/seeseemelk/MockBukkit) and [AssertJ](https://joel-costigliola.github.io/assertj/)
+- **[Jacoco](https://github.com/jacoco/jacoco) code coverage** report including an upload task to [codecov](https://codecov.io/) 
+- Fully integrated [**semantic-release**](https://semantic-release.gitbook.io/semantic-release/) release pipeline 
+- Automatic [**changelog generation**](https://github.com/semantic-release/changelog) based on [conventional commit messages](https://www.conventionalcommits.org/)
+- [**Github Actions**](https://github.com/features/actions) workflow for build and release
+- Publishing of **maven artifacts** to [GitHub Packages](https://github.com/features/packages)
   > no more need for self hosted nexus or artifactory server
-- GitHub **issue templates** for bug and feature requests
+- GitHub [**issue templates**](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository) for bug and feature requests
 - Contributing and Code of Conduct **guidelines**
-- Nice **badges** to show of your project
+- Nice [**badges**](https://shields.io) to show of your project
 
 ## Setup Template
 
