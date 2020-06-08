@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.7...v1.4.0) (2020-06-08)
+
+
+### Features
+
+* **docs:** add spiget shields to spigot resource ([0907394](https://github.com/Silthus/spigot-plugin-template/commit/090739466d919f7b6f3fe24c3a2fade87129732d))
+
 ## [1.3.7](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.6...v1.3.7) (2020-05-25)
 
 
