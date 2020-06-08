@@ -36,7 +36,7 @@ The template or better boilerplate comes with a lot of features that are useful 
 > **Note** This setup is actual only for IntelliJ
 
 - Create a new Github project using this template.
-- Clone this repository and open it in IntelliJ.
+- Clone the new repository and open it in IntelliJ.
 - Import the project with gradle.
 - Go into the gradle.properties file and update the variables.
 - Delete the [Changelog]. It will be generated on your first release.
@@ -44,6 +44,18 @@ The template or better boilerplate comes with a lot of features that are useful 
 - Then execute the **setupServer** run configuration and the template will download the server jar file.
 
 Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting any pull requests or opening issues.
+
+## Github Package Authentication
+
+You need to configure [authentication for Github Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages#authenticating-to-github-packages) if you want to use the maven package in other projects.
+
+1. [Create a Github Personal Access Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+2. Create or update the `gradle.properties` inside `C:\Users\%username%\.gradle` with the following and replace `YOUR_GITHUB_USERNAME` with your Github username and `YOUR_PERSONAL_ACCESS_TOKEN` with the access token from step 1.
+
+```properties
+gpr.user = YOUR_GITHUB_USERNAME
+gpr.key = YOUR_PERSONAL_ACCESS_TOKEN
+```
 
 ## Deploy Task
 
