@@ -56,8 +56,8 @@ You need to configure [authentication for Github Packages](https://help.github.c
 2. Create or update the `gradle.properties` inside `C:\Users\%username%\.gradle` with the following and replace `YOUR_GITHUB_USERNAME` with your Github username and `YOUR_PERSONAL_ACCESS_TOKEN` with the access token from step 1.
 
 ```properties
-gpr.user = YOUR_GITHUB_USERNAME
-gpr.key = YOUR_PERSONAL_ACCESS_TOKEN
+gpr.user=YOUR_GITHUB_USERNAME
+gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 ```
 
 ## Deploy Task
