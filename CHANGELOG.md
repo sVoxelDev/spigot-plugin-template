@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.4.0...v1.5.0) (2020-06-10)
+
+
+### Features
+
+* auto update dependencies with dependabot ([e28ccf4](https://github.com/Silthus/spigot-plugin-template/commit/e28ccf4cbb64ee9975b23c974b50ad1f0a4315f9))
+
 # [1.4.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.3.7...v1.4.0) (2020-06-08)
 
 
