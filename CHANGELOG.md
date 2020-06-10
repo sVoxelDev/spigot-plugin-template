@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.0...v1.5.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **docs:** remove invalid whitespaces from gradle.properties ([d3fd4b5](https://github.com/Silthus/spigot-plugin-template/commit/d3fd4b53f1d7c1bd4f331f92b1651f89682b3122))
+
 # [1.5.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.4.0...v1.5.0) (2020-06-10)
 
 
