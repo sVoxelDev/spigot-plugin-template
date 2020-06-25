@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.1...v1.5.2) (2020-06-25)
+
+
+### Bug Fixes
+
+* **build:** only run once on PR from same repo ([4df7f57](https://github.com/Silthus/spigot-plugin-template/commit/4df7f5701a2c47c46bf5394f544ca5fdf4d8bec4))
+
 ## [1.5.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.0...v1.5.1) (2020-06-10)
 
 
