@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.2...v1.6.0) (2020-06-25)
+
+
+### Features
+
+* **build:** split build and test into separate jobs ([38f74d4](https://github.com/Silthus/spigot-plugin-template/commit/38f74d48d258521f9414d1f050cacb7201cf6bfd))
+
 ## [1.5.2](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.1...v1.5.2) (2020-06-25)
 
 
