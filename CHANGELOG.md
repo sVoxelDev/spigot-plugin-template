@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.6.0...v1.7.0) (2020-07-02)
+
+
+### Features
+
+* use new spigradle debug task for running the server ([d7a3f25](https://github.com/Silthus/spigot-plugin-template/commit/d7a3f25a694ab92e03ebc7bf9058264b5324acf1))
+
 # [1.6.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.5.2...v1.6.0) (2020-06-25)
 
 
