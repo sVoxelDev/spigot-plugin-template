@@ -21,7 +21,7 @@ The template or better boilerplate comes with a lot of features that are useful 
 
 - Ready to use [**Gradle**](https://gradle.org/) project with lots of utility tasks
 - Automatic **generation of `plugin.yaml`** based of project properties with [SpiGradle](https://github.com/EntryPointKR/Spigradle/)
-- Integrated [**Spigot test server**](https://github.com/Tammo0987/Spigot-Workspace-Template) with a one click build, copy plugin and start debugging in IntelliJ task 
+- Integrated [**Spigot test server**](https://github.com/EntryPointKR/Spigradle/) with a one click build, copy plugin and start debugging in IntelliJ task 
 - [**Gradle shadow plugin**](https://imperceptiblethoughts.com/shadow/) to easily ship your needed dependencies with your plugin
 - **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** test setup including [MockBukkit](https://github.com/seeseemelk/MockBukkit) and [AssertJ](https://joel-costigliola.github.io/assertj/)
 - **[Jacoco](https://github.com/jacoco/jacoco) code coverage** report including an upload task to [codecov](https://codecov.io/) 
@@ -62,12 +62,16 @@ gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 
 ## Deploy Task
 
-You can export your plugin to the plugins directory from your working directory with the Gradle **deploy task**. The task will **build and copy** your plugin **automatically**.
+You can export your plugin to the plugins directory from your working directory with the Gradle **prepareSpigotPlugins** task. The task will **build and copy** your plugin **automatically** into the `plugins/` directory.
 
 ## Debugging the Server
 
-You can use and debug the installed test server by running the Server run configuration. Every time you start the server, the plugin will be deployed. You can disable it, when you edit the Server run configuration.
+You can run or debug the `Server` application from within IntelliJ to automatically download the Minecraft server, built it, copy your and dependent plugins into it and start it in debugging mode.
 
-## Important info
+This is due to the awesome power of Spigradle's spigot tasks. Find out more on the [Spigradle Github page](https://github.com/spigradle/spigradle).
 
-By using this template and starting the server, you agree to the Minecraft EULA automatically, because in this template is the eula file, because then you dont have to agree manually.
+## References
+
+* [Spigradle](https://github.com/spigradle/spigradle/): *provides awesome gradle tasks that make your live a lot easier*
+* [semantic-release](https://semantic-release.gitbook.io/semantic-release/): *in my opinion every project should use this!*
+* [conventional commit messages](https://www.conventionalcommits.org/): *do commit message the right way*

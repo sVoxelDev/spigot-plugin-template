@@ -12,6 +12,7 @@ build/
 
 # Server
 working/*
+debug/*
 !working/server.properties
 /.idea/
 

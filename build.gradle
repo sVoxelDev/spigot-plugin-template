@@ -7,7 +7,7 @@ buildscript {
 
 plugins {
     id 'com.github.johnrengelman.shadow' version '6.0.0'
-    id 'kr.entree.spigradle' version '1.2.4'
+    id 'kr.entree.spigradle' version '1.4.1'
     id 'java'
     id 'jacoco'
 }
@@ -61,9 +61,6 @@ repositories {
             password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
         }
     }
-
-    //Add your repositories here
-    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
 }
 
 dependencies {
@@ -75,10 +72,10 @@ dependencies {
     //Add dependencies here
 
     //Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.+'
     testImplementation "org.mockito:mockito-core:3.+"
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.15:0.3.0-SNAPSHOT'
-    testImplementation 'org.assertj:assertj-core:3.16.1'
+    testImplementation mockBukkit()
+    testImplementation 'org.assertj:assertj-core:3.+'
     testImplementation lombok()
     testAnnotationProcessor lombok()
 }
@@ -108,69 +105,4 @@ processResources {
     expand project.properties
 }
 
-task cleanPlugin() {
-    group 'deploy'
-    description 'Cleans the plugin in the working directory up'
-    delete "${rootProject.rootDir}/working/plugins/" + project.property("pluginName") + '*.jar'
-}
-
-task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
-    from(new File(spigotPluginYaml.temporaryDir, "plugin.yml"))
-    into(sourceSets.test.resources.srcDirs[0])
-}
-
-tasks.test.dependsOn(copyPluginYaml)
-
-task deploy(type: Copy, dependsOn: [
-    'cleanPlugin',
-    'jar'
-]) {
-    group 'deploy'
-    description 'Exports you plugin to the plugin directory in your test server'
-
-    def pluginFolder = project.property('pluginFolder').toString()
-
-    from shadowJar
-    into pluginFolder.isEmpty() ? "${rootProject.rootDir}/working/plugins" : pluginFolder
-}
-
-task setupServer {
-    group 'server'
-    description 'Downloads the server jar'
-
-    def server = new File("${rootProject.rootDir}/working/server.jar")
-
-    if (server.exists()) {
-        server.delete()
-    }
-
-    def url = ''
-    switch (mcVersion) {
-        case '1.8.8':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar'
-            break
-
-        case '1.12.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar'
-            break
-
-        case '1.13.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar'
-            break
-
-        case '1.14.4':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.14.4.jar'
-            break
-        case '1.15.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar'
-            break
-    }
-
-    if (url.isEmpty()) {
-        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2, 1.14.4, 1.15.2]!')
-    }
-
-    new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
-}
-
-defaultTasks 'build', 'deploy'
+defaultTasks 'build'
