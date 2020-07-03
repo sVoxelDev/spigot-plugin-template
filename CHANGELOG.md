@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.7.0...v1.7.1) (2020-07-03)
+
+
+### Bug Fixes
+
+* target Minecraft 1.16.1 in gradle.properties ([8beb34a](https://github.com/Silthus/spigot-plugin-template/commit/8beb34a733787bd4c7cdb814a60234be2b3e981e))
+
 # [1.7.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.6.0...v1.7.0) (2020-07-02)
 
 
