@@ -45,16 +45,17 @@ The template or better boilerplate comes with a lot of features that are useful 
 ## Quickstart setup
 
 * Create a [new Github project](https://github.com/Silthus/spigot-plugin-template/generate) using this template.
-* Clone the new repository and open it in IntelliJ.
-* Go into the gradle.properties file and update the following variables:
+* **Clone** the new repository and open it in IntelliJ.
+* **Update** the **gradle.properties** file and change the following variables:
   * `group`: your-maven-group-id (e.g.: io.github.silthus)
   * `pluginName`: YourPluginName
   * `author`: YourName
-* Update the `root.projectName` inside `settings.gradle`. This will be your `artifactId`.
-* Delete the  `CHANGELOG.md`. It will be generated on your [first release](#releasing-a-new-version-of-your-plugin).
-* Update the `README` to point to your project and spigot resource id.
-* Rename the java package and plugin to match your project.
-* Then execute the setupServer run configuration and the template will run the Spigot BuildTools to download and build spigot or paper for you.
+* **Update** the `root.projectName` inside **settings.gradle**. This will be your `artifactId`.
+* **Delete** the  `CHANGELOG.md`. It will be generated on your [first release](#releasing-a-new-version-of-your-plugin).
+* **Update** the `README` to point to your project and spigot resource id.
+* **Rename** the java package and plugin to match your project.
+* Then execute the `Server` run configuration and the template will run the Spigot BuildTools to download and build spigot or paper for you.
+* **Code away :)** - *and once you are ready, push your commit (in [conventional commit style](#commit-message-format)) to master.*
 
 Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting any pull requests or opening issues.
 
