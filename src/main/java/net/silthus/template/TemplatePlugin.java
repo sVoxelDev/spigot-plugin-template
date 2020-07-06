@@ -1,6 +1,6 @@
 package net.silthus.template;
 
-import kr.entree.spigradle.Plugin;
+import kr.entree.spigradle.annotations.PluginMain;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
 
-@Plugin
+@PluginMain
 public class TemplatePlugin extends JavaPlugin implements Listener {
 
   public TemplatePlugin() {}
