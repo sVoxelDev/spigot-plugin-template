@@ -12,7 +12,7 @@ build/
 
 # Server
 working/*
-debug/*
+**/debug/**/*
 !working/server.properties
 /.idea/
 
