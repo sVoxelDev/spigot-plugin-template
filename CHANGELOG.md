@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.7.1...v2.0.0) (2020-07-06)
+
+
+### Features
+
+* update spigradle to 2.0.0 ([df1f431](https://github.com/Silthus/spigot-plugin-template/commit/df1f431c6cb68bab085a182970c33cd0e96cddca)), closes [#19](https://github.com/Silthus/spigot-plugin-template/issues/19)
+
+
+### BREAKING CHANGES
+
+* The `@Plugin` annotation on the plugin main class for spigradle was renamed to `@PluginMain`
+
 ## [1.7.1](https://github.com/Silthus/spigot-plugin-template/compare/v1.7.0...v1.7.1) (2020-07-03)
 
 
