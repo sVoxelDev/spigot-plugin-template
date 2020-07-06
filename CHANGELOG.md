@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/Silthus/spigot-plugin-template/compare/v2.0.0...v2.0.1) (2020-07-06)
+
+
+### Bug Fixes
+
+* **debug:** exclude all content inside debug/ ([751d2b7](https://github.com/Silthus/spigot-plugin-template/commit/751d2b7057a57330851968cb9c9bafad82f09d56))
+
 # [2.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.7.1...v2.0.0) (2020-07-06)
 
 
