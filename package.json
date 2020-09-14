@@ -5,7 +5,7 @@
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.1.1",
     "@semantic-release/release-notes-generator": "9.0.1",
-    "commitlint": "9.1.2",
+    "commitlint": "11.0.0",
     "conventional-changelog-conventionalcommits": "4.4.0",
     "gradle-semantic-release-plugin": "1.4.8",
     "husky": "4.3.0",
