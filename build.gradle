@@ -8,15 +8,21 @@ buildscript {
 plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'kr.entree.spigradle' version '2.2.3'
+    id 'io.freefair.lombok' version '5.3.0'
     id 'java'
     id 'jacoco'
+    id 'idea'
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
 
-sourceCompatibility = 8
-targetCompatibility = 8
+if (project.hasProperty("local_script")) {
+    apply from: file(local_script + "/build.local.gradle")
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
 
 ext {
     mcVersion = project.property("mcVersion")
@@ -44,27 +50,11 @@ archivesBaseName = project.property("pluginName")
 repositories {
     mavenCentral()
     jcenter()
-
     spigot()
-//    bungeecord()
-//    paper()
-//    protocolLib()
-//    enginehub()
-
-    maven {
-        name = 'github'
-        url = 'https://maven.pkg.github.com/Silthus'
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
-        }
-    }
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    compileOnly lombok()
-    annotationProcessor lombok()
-
     compileOnly spigot(mcVersion)
 
     //Add dependencies here
@@ -74,8 +64,6 @@ dependencies {
     testImplementation "org.mockito:mockito-core:3.+"
     testImplementation mockBukkit()
     testImplementation 'org.assertj:assertj-core:3.+'
-    testImplementation lombok()
-    testAnnotationProcessor lombok()
 }
 
 shadowJar {
@@ -89,6 +77,7 @@ shadowJar {
 
 tasks.build.dependsOn(shadowJar)
 tasks.publish.dependsOn(shadowJar)
+tasks.prepareSpigotPlugins.dependsOn(shadowJar)
 
 test {
     useJUnitPlatform()
