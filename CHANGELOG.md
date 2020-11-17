@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v2.0.1...v3.0.0) (2020-11-17)
+
+
+### Bug Fixes
+
+* **release:** upgrade to jdk11 ([120683e](https://github.com/Silthus/spigot-plugin-template/commit/120683ea45318ff61a40c02f2cc65fdb41045fc4))
+
+
+### Features
+
+* add gradle lombok plugin ([d2468bf](https://github.com/Silthus/spigot-plugin-template/commit/d2468bf845b4f0b3c498d197ad641bb46fd341d0))
+
+
+### BREAKING CHANGES
+
+* **release:** the template now supports jdk11 and upwards
+
 ## [2.0.1](https://github.com/Silthus/spigot-plugin-template/compare/v2.0.0...v2.0.1) (2020-07-06)
 
 
