@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.0...v3.0.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **build:** jacoco coverage report not generated ([90721d9](https://github.com/Silthus/spigot-plugin-template/commit/90721d92fe4b07248214063f1ca89e139dab6cc2))
+
 # [3.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v2.0.1...v3.0.0) (2020-11-17)
 
 
