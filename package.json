@@ -7,7 +7,7 @@
     "@semantic-release/release-notes-generator": "9.0.1",
     "conventional-changelog-conventionalcommits": "4.5.0",
     "gradle-semantic-release-plugin": "1.4.14",
-    "semantic-release": "17.3.9"
+    "semantic-release": "17.4.0"
   },
   "scripts": {
     "semantic-release": "npx semantic-release"
