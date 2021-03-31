@@ -1685,10 +1685,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
-gradle-semantic-release-plugin@1.4.15:
-  version "1.4.15"
-  resolved "https://registry.yarnpkg.com/gradle-semantic-release-plugin/-/gradle-semantic-release-plugin-1.4.15.tgz#e5659ecc7d53b0e8ce5744ed6afe41f863da414c"
-  integrity sha512-zOZCmgqSgvfzHoyvOJYqgY4hV+d54Bp6Dx/T901+noDmrQkb9l97MLIsLuSrFqd0tvjIlRyYBHCmZZrKZKukng==
+gradle-semantic-release-plugin@1.4.16:
+  version "1.4.16"
+  resolved "https://registry.yarnpkg.com/gradle-semantic-release-plugin/-/gradle-semantic-release-plugin-1.4.16.tgz#602716818457731dae7d9a8f3b47abf395ac139b"
+  integrity sha512-mxzzOtgT3AoNxFD7cp8sL+8pg5/SsX7AJODdOZRLktSxtu84mdzURrGhxshaAy3sPT2rYycBBl7gja/5L6P/qQ==
   dependencies:
     promisified-properties "^2.0.3"
     split2 "^3.1.1"
