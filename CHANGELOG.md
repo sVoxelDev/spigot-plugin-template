@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.1...v3.0.2) (2021-05-31)
+
+
+### Bug Fixes
+
+* **idea:** Utilize `$PROJECT_DIR$` in the `WORKING_DIRECTORY` option ([3bef4ee](https://github.com/Silthus/spigot-plugin-template/commit/3bef4eeba90f718ee1909aba058d2b9524a45182))
+
 ## [3.0.1](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.0...v3.0.1) (2021-01-11)
 
 
