@@ -6,7 +6,7 @@
     "@semantic-release/github": "7.2.3",
     "@semantic-release/release-notes-generator": "9.0.2",
     "conventional-changelog-conventionalcommits": "4.6.0",
-    "gradle-semantic-release-plugin": "1.4.19",
+    "gradle-semantic-release-plugin": "1.4.22",
     "semantic-release": "17.4.3"
   },
   "scripts": {
