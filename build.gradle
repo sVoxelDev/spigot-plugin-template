@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
     }
 }
@@ -21,8 +20,8 @@ if (project.hasProperty("local_script")) {
     apply from: file(local_script + "/build.local.gradle")
 }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 16
+targetCompatibility = 16
 
 ext {
     mcVersion = project.property("mcVersion")
@@ -36,6 +35,7 @@ spigot {
     apiVersion = project.property("apiVersion")
     load = STARTUP
     //    depends = ['']
+    //    softDepends = [''
 }
 
 compileJava {
@@ -49,20 +49,19 @@ archivesBaseName = project.property("pluginName")
 
 repositories {
     mavenCentral()
-    jcenter()
     spigot()
     maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    compileOnly spigot(mcVersion)
+    implementation spigot(mcVersion)
 
     //Add dependencies here
 
     //Test dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter:5.+'
     testImplementation "org.mockito:mockito-core:3.+"
-    testImplementation mockBukkit()
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.16:1.0.0'
     testImplementation 'org.assertj:assertj-core:3.+'
 }
 

@@ -2,23 +2,19 @@ package net.silthus.template;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
-import java.io.File;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TemplatePluginTests {
 
   private ServerMock server;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     server = MockBukkit.mock();
-    MockBukkit.loadWith(TemplatePlugin.class, new File("build/tmp/spigotPluginYaml/plugin.yml"));
+    MockBukkit.load(TemplatePlugin.class);
   }
 
   @Test
@@ -29,7 +25,7 @@ public class TemplatePluginTests {
     server.getPluginManager().assertEventFired(PlayerJoinEvent.class);
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
     MockBukkit.unmock();
   }
