@@ -93,10 +93,10 @@ jobs:
         with:
           java-version: 16
 
-      - name: Set up Node.js v12.x
+      - name: Set up Node.js v16.x
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - name: Cache Gradle
         id: cache-gradle
