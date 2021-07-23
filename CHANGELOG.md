@@ -1,3 +1,21 @@
+# [4.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.2...v4.0.0) (2021-07-23)
+
+
+### Bug Fixes
+
+* **release:** update to nodejs 16.5 ([eb6e104](https://github.com/Silthus/spigot-plugin-template/commit/eb6e104b2d89ef7d75a6b0aa12c772fea58d3eaa))
+
+
+### Features
+
+* **build:** update to java16, minecraft 1.17 and gradle 7 ([6cb9365](https://github.com/Silthus/spigot-plugin-template/commit/6cb93654781d53a2fcfca22b2beff1d595b097a2))
+* **ci:** update to jdk16 in gradle ci build ([4c6ee7a](https://github.com/Silthus/spigot-plugin-template/commit/4c6ee7a425353396939d8565d4bc8d60d8b40ba4))
+
+
+### BREAKING CHANGES
+
+* **build:** now uses java16 to be compatible with minecraft 1.17
+
 ## [3.0.2](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.1...v3.0.2) (2021-05-31)
 
 
