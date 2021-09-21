@@ -1,3 +1,15 @@
+# [4.2.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.1.0...v4.2.0) (2021-09-21)
+
+
+### Features
+
+* upgrade to jdk 17 ([24ae775](https://github.com/Silthus/spigot-plugin-template/commit/24ae775bffa02cc4e30f01b295dde2c0a16e54fe))
+
+
+### Reverts
+
+* upgrade to jdk 17 ([92036bf](https://github.com/Silthus/spigot-plugin-template/commit/92036bf9b73e1fb531730dff146ed854d7d702fa))
+
 # [4.1.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.0.0...v4.1.0) (2021-09-21)
 
 
