@@ -20,8 +20,8 @@ if (project.hasProperty("local_script")) {
     apply from: file(local_script + "/build.local.gradle")
 }
 
-sourceCompatibility = 17
-targetCompatibility = 17
+sourceCompatibility = 16
+targetCompatibility = 16
 
 ext {
     mcVersion = project.property("mcVersion")
