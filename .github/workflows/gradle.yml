@@ -114,4 +114,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_URL: "https://api.github.com/"
-        run: npx -p @semantic-release/changelog -p @semantic-release/git -p gradle-semantic-release-plugin -p semantic-release semantic-release
+        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p gradle-semantic-release-plugin -p semantic-release semantic-release
