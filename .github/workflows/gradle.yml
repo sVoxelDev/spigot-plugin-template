@@ -83,7 +83,7 @@ jobs:
 
   release:
     needs: [build, test]
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' || 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
 
     runs-on: ubuntu-18.04
 
@@ -111,9 +111,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Release
-        run: |
-          yarn install
-          yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_URL: "https://api.github.com/"
+        run: npx -p @semantic-release/changelog -p @semantic-release/git -p gradle-semantic-release-plugin -p semantic-release semantic-release
