@@ -1,6 +1,3 @@
-minApprovals:
-  NONE: 0
-requiredLabels:
-  - dependencies
-updateBranch: true
-mergeMethod: rebase
+- match:
+    dependency_type: all
+    update_type: "semver:minor" # includes patch updates!
