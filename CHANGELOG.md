@@ -1,3 +1,16 @@
+# [4.1.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.0.0...v4.1.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* **release:** allow semantic-release legacy peer deps ([630364c](https://github.com/Silthus/spigot-plugin-template/commit/630364cfba83dc1b2d227e0c9dc4425908554f6b))
+
+
+### Features
+
+* **release:** add alpha and beta releases ([1931153](https://github.com/Silthus/spigot-plugin-template/commit/1931153ce8d623f20b75aebdf3c5bcdafb31aa19))
+* **release:** remove unnecessary node dependency ([ce926bf](https://github.com/Silthus/spigot-plugin-template/commit/ce926bfe3f511397507565d1872719047499a32d))
+
 # [4.0.0](https://github.com/Silthus/spigot-plugin-template/compare/v3.0.2...v4.0.0) (2021-07-23)
 
 
