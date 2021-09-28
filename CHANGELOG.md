@@ -1,3 +1,12 @@
+## [4.2.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.0...v4.2.1) (2021-09-28)
+
+
+### Bug Fixes
+
+* restore gradle wrapper jar ([c172046](https://github.com/Silthus/spigot-plugin-template/commit/c172046c56897c69537a4d9cfef336e89e349af9))
+* upgrade to matching gradle-wrapper for jdk 17 ([ee642b0](https://github.com/Silthus/spigot-plugin-template/commit/ee642b04252d8f767a1d7848934e7a5cc22e12bf))
+* upgrade to matching gradle-wrapper for jdk 17 ([7e35ba7](https://github.com/Silthus/spigot-plugin-template/commit/7e35ba7b44355e2a596e0e03964f951203cc2c98))
+
 # [4.2.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.1.0...v4.2.0) (2021-09-21)
 
 
