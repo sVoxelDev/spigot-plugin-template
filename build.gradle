@@ -20,8 +20,8 @@ if (project.hasProperty("local_script")) {
     apply from: file(local_script + "/build.local.gradle")
 }
 
-sourceCompatibility = 17
-targetCompatibility = 17
+sourceCompatibility = 16
+targetCompatibility = 16
 
 ext {
     mcVersion = project.property("mcVersion")
@@ -59,10 +59,10 @@ dependencies {
     //Add dependencies here
 
     //Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.+'
-    testImplementation "org.mockito:mockito-core:3.+"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.16:1.5.2'
-    testImplementation 'org.assertj:assertj-core:3.+'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
 }
 
 shadowJar {
