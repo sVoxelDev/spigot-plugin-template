@@ -1,3 +1,11 @@
+## [4.2.2](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.1...v4.2.2) (2021-10-04)
+
+
+### Bug Fixes
+
+* downgrade to jdk 16 ([3791bd2](https://github.com/Silthus/spigot-plugin-template/commit/3791bd2b83201ca648e7dc00ca7cb0c52a26331b))
+* publish shaded artifacts ([dc60f45](https://github.com/Silthus/spigot-plugin-template/commit/dc60f45cfa89fe215cf05b16c8002f503a7ae403))
+
 ## [4.2.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.0...v4.2.1) (2021-09-28)
 
 
