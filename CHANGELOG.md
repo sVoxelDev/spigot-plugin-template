@@ -1,3 +1,15 @@
+# [4.3.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.2...v4.3.0) (2021-10-17)
+
+
+### Bug Fixes
+
+* add default config.yml ([bf36d49](https://github.com/Silthus/spigot-plugin-template/commit/bf36d49e5ce95724433fa24ab356ba962a7ac77b)), closes [#128](https://github.com/Silthus/spigot-plugin-template/issues/128)
+
+
+### Features
+
+* update to gradle 7.3-rc1 (adds jdk17 support) ([b9a4e7b](https://github.com/Silthus/spigot-plugin-template/commit/b9a4e7b7be83ee572f27c350c63b61909f2a5748))
+
 ## [4.2.2](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.1...v4.2.2) (2021-10-04)
 
 
