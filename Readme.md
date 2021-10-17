@@ -11,6 +11,8 @@
 
 You can use this template to develop your own high quality Spigot plugins using [Gradle](https://gradle.org/) with ease.
 
+> See the [minecraft-server-template](https://github.com/Silthus/minecraft-server-template) for quick starting your Minecraft network in under 30 seconds.
+
 * [Features](#features)
 * [Quickstart setup](#quickstart-setup)
 * [Releasing a new version of your plugin](#releasing-a-new-version-of-your-plugin)
@@ -58,6 +60,9 @@ The template or better boilerplate comes with a lot of features that are useful 
 * **Code away :)** - *and once you are ready, push your commit (in [conventional commit style](#commit-message-format)) to master.*
 
 Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting any pull requests or opening issues.
+
+> **NOTE**  
+> You might need to run the `gradle clean` task after renaming the packages and reimport the gradle project to resolve errors with generating the `plugin.yml`.
 
 ## Releasing a new version of your plugin
 
