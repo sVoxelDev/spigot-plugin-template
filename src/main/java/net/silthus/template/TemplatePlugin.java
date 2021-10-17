@@ -1,6 +1,8 @@
 package net.silthus.template;
 
 import kr.entree.spigradle.annotations.PluginMain;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -13,21 +15,30 @@ import java.io.File;
 @PluginMain
 public class TemplatePlugin extends JavaPlugin implements Listener {
 
-  public TemplatePlugin() {}
+    @Getter
+    @Accessors(fluent = true)
+    private static TemplatePlugin instance;
 
-  public TemplatePlugin(
-      JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
-    super(loader, description, dataFolder, file);
-  }
+    public TemplatePlugin() {
+        instance = this;
+    }
 
-  @Override
-  public void onEnable() {
+    public TemplatePlugin(
+            JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
+        super(loader, description, dataFolder, file);
+        instance = this;
+    }
 
-    getServer().getPluginManager().registerEvents(this, this);
-  }
+    @Override
+    public void onEnable() {
 
-  @EventHandler
-  public void onPlayerJoin(PlayerJoinEvent event) {
-    getLogger().info("Player joined.");
-  }
+        saveDefaultConfig();
+
+        getServer().getPluginManager().registerEvents(this, this);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        getLogger().info("Player joined.");
+    }
 }

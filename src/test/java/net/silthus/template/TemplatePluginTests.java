@@ -9,24 +9,24 @@ import org.junit.jupiter.api.Test;
 
 public class TemplatePluginTests {
 
-  private ServerMock server;
+    private ServerMock server;
 
-  @BeforeEach
-  public void setUp() {
-    server = MockBukkit.mock();
-    MockBukkit.load(TemplatePlugin.class);
-  }
+    @BeforeEach
+    public void setUp() {
+        server = MockBukkit.mock();
+        MockBukkit.load(TemplatePlugin.class);
+    }
 
-  @Test
-  public void shouldFirePlayerJoinEvent() {
+    @Test
+    public void shouldFirePlayerJoinEvent() {
 
-    server.addPlayer();
+        server.addPlayer();
 
-    server.getPluginManager().assertEventFired(PlayerJoinEvent.class);
-  }
+        server.getPluginManager().assertEventFired(PlayerJoinEvent.class);
+    }
 
-  @AfterEach
-  public void tearDown() {
-    MockBukkit.unmock();
-  }
+    @AfterEach
+    public void tearDown() {
+        MockBukkit.unmock();
+    }
 }
