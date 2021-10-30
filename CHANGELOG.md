@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.3.0...v4.3.1) (2021-10-30)
+
+
+### Bug Fixes
+
+* **ci:** update the release branch to main ([5654a3c](https://github.com/Silthus/spigot-plugin-template/commit/5654a3c247182489c49714761ad2483e28440112))
+
 # [4.3.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.2.2...v4.3.0) (2021-10-17)
 
 
