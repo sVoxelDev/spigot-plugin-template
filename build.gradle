@@ -34,8 +34,8 @@ spigot {
     authors = [project.property("author")]
     apiVersion = project.property("apiVersion")
     load = STARTUP
-    //    depends = ['']
-    //    softDepends = [''
+    // depends = ['']
+    // softDepends = []
 }
 
 compileJava {
@@ -48,30 +48,42 @@ compileJava {
 archivesBaseName = project.property("pluginName")
 
 repositories {
+    mavenLocal()
     mavenCentral()
     spigot()
     maven { url = 'https://jitpack.io' }
+    maven { url = 'https://repo.aikar.co/content/groups/aikar/' }
+    maven { url = 'https://repo.dmulloy2.net/repository/public/' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/public/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 dependencies {
+    // using spigot-api
     implementation spigot(mcVersion)
+    // or using paper-api
+    // implementation "io.papermc.paper:paper-api:${mcVersion}-R0.1-SNAPSHOT"
 
-    //Add dependencies here
+    // Add your dependencies here
+    // Here are some opinionated dependencies that might help you with your plugin development:
 
-    //Test dependencies
+    // Annotation Command Framework: https://github.com/aikar/commands
+    implementation "co.aikar:acf-paper:0.5.0-SNAPSHOT"
+
+    // Test dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.mockito:mockito-core:4.0.0'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.16:1.5.2'
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.17:1.7.0'
     testImplementation 'org.assertj:assertj-core:3.21.0'
 }
 
 shadowJar {
     classifier = ''
-//    dependencies {
-//        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
-//    }
-//    relocate 'co.aikar.commands', "${packageName}.acf"
-//    relocate 'co.aikar.locales', "${packageName}.locales"
+    dependencies {
+        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
+    }
+    relocate 'co.aikar.commands', "${packageName}.acf"
+    relocate 'co.aikar.locales', "${packageName}.locales"
 }
 
 tasks.build.dependsOn(shadowJar)
