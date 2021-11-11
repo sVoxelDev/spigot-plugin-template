@@ -1,3 +1,16 @@
+# [4.4.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.3.1...v4.4.0) (2021-11-11)
+
+
+### Features
+
+* add acf-command example incl. tests ([1a71da6](https://github.com/Silthus/spigot-plugin-template/commit/1a71da671f7f3bb693480b9837e3f15d0d8afbb4))
+* add example for a test base class ([436f690](https://github.com/Silthus/spigot-plugin-template/commit/436f690ca6f922244e3d820a786e9458d2aab60a))
+* add script to update maven and gradle versions inside the readme ([234f0fa](https://github.com/Silthus/spigot-plugin-template/commit/234f0fa737e7db92ac0321a262f94a5a9fde82eb))
+* add support for building jdk17 packages with jitpack ([b9eec76](https://github.com/Silthus/spigot-plugin-template/commit/b9eec7669cbca6922eb22be6305e389b0d0214bb))
+* add vault economy example incl. tests ([331e961](https://github.com/Silthus/spigot-plugin-template/commit/331e961abc5466a2635166057a1183a92a66d03f))
+* **renovate:** group patch and minor dependencies to one PR ([0c0119a](https://github.com/Silthus/spigot-plugin-template/commit/0c0119a6d899478304cbc54f2fa11591fa6071fb))
+* upgrade to gradle 7.3 and JDK17 ([9e0aadc](https://github.com/Silthus/spigot-plugin-template/commit/9e0aadc90d85d4e336a9249013f87724420ef55b))
+
 ## [4.3.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.3.0...v4.3.1) (2021-10-30)
 
 
