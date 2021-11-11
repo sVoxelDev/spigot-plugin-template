@@ -35,7 +35,7 @@ spigot {
     apiVersion = project.property("apiVersion")
     load = STARTUP
     // depends = ['']
-    // softDepends = []
+    softDepends = ['Vault']
 }
 
 compileJava {
@@ -69,6 +69,8 @@ dependencies {
 
     // Annotation Command Framework: https://github.com/aikar/commands
     implementation "co.aikar:acf-paper:0.5.0-SNAPSHOT"
+    // Vault (https://github.com/MilkBowl/VaultAPI) for economy, permissions and chat API
+    implementation "com.github.MilkBowl:VaultAPI:1.7.1"
 
     // Test dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
