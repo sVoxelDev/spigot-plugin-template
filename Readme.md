@@ -13,6 +13,8 @@ You can use this template to develop your own high quality Spigot plugins using 
 
 > See the [minecraft-server-template](https://github.com/Silthus/minecraft-server-template) for quick starting your Minecraft network in under 30 seconds.
 
+[![Join our Discord server!](https://invidget.switchblade.xyz/s3XVvKNHZE)](http://discord.gg/s3XVvKNHZE)
+
 * [Features](#features)
 * [Quickstart setup](#quickstart-setup)
 * [Releasing a new version of your plugin](#releasing-a-new-version-of-your-plugin)
@@ -33,6 +35,7 @@ The template or better boilerplate comes with a lot of features that are useful 
 * Automatic **generation of `plugin.yaml`** based of project properties with [SpiGradle](https://github.com/EntryPointKR/Spigradle/)
 * Integrated [**Spigot test server**](https://github.com/EntryPointKR/Spigradle/) with a one click build, copy plugin and start debugging in IntelliJ task 
 * [**Gradle shadow plugin**](https://imperceptiblethoughts.com/shadow/) to easily ship your needed dependencies with your plugin
+* Example integrations including tests for the [Annotation Command Framework](https://github.com/aikar/commands/) and [Vault](https://github.com/MilkBowl/VaultAPI).
 * **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** test setup including [MockBukkit](https://github.com/seeseemelk/MockBukkit) and [AssertJ](https://joel-costigliola.github.io/assertj/)
 * **[Jacoco](https://github.com/jacoco/jacoco) code coverage** report including an upload task to [codecov](https://codecov.io/) 
 * Fully integrated [**semantic-release**](https://semantic-release.gitbook.io/semantic-release/) release pipeline 
