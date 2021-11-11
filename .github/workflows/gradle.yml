@@ -110,8 +110,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Grant execute permission for update-versions.sh
+        run: chmod +x update-versions.sh
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_URL: "https://api.github.com/"
-        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p gradle-semantic-release-plugin -p semantic-release semantic-release
+        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p gradle-semantic-release-plugin -p semantic-release semantic-release

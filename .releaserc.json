@@ -12,6 +12,12 @@
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./update-versions.sh ${nextRelease.version}"
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "gradle-semantic-release-plugin",
