@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.4.0...v4.4.1) (2021-11-14)
+
+
+### Bug Fixes
+
+* lowercase groupid and artifactid on publish ([f02d7dd](https://github.com/Silthus/spigot-plugin-template/commit/f02d7dd57a8e2ee33ba1535f267e3ec5e6c99550))
+
 # [4.4.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.3.1...v4.4.0) (2021-11-11)
 
 
