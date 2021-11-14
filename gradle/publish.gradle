@@ -32,6 +32,8 @@ publishing {
     publications {
         shadow(MavenPublication) { publication ->
             project.shadow.component(publication)
+            artifactId = project.getName().toLowerCase()
+            groupId = ((String)project.getGroup()).toLowerCase()
         }
     }
     repositories {
