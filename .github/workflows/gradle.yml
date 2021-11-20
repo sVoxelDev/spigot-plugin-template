@@ -77,6 +77,8 @@ jobs:
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.24
         if: always()
+        with:
+          files: test-results/**/*.xml
 
   release:
     needs: [build, test]
