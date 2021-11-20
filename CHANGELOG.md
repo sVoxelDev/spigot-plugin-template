@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.5.0...v4.5.1) (2021-11-20)
+
+
+### Bug Fixes
+
+* **ci:** invalid unit test results path ([76a65f5](https://github.com/Silthus/spigot-plugin-template/commit/76a65f5b845d58768ffbabec7533b1d8aa1756d3))
+
 # [4.5.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.4.1...v4.5.0) (2021-11-20)
 
 
