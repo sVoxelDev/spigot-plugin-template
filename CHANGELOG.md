@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/Silthus/spigot-plugin-template/compare/v4.4.1...v4.5.0) (2021-11-20)
+
+
+### Features
+
+* **ci:** publish unit test report directly in github ([96430db](https://github.com/Silthus/spigot-plugin-template/commit/96430db69c3c617cb8756d9db0177c1330f163c3))
+
 ## [4.4.1](https://github.com/Silthus/spigot-plugin-template/compare/v4.4.0...v4.4.1) (2021-11-14)
 
 
