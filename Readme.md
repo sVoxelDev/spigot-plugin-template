@@ -2,7 +2,6 @@
 
 [![Build Status](https://github.com/Silthus/spigot-plugin-template/workflows/Build/badge.svg)](../../actions?query=workflow%3ABuild)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Silthus/spigot-plugin-template?include_prereleases&label=release)](../../releases)
-[![Discord](https://img.shields.io/discord/905798902874267690?label=discord&logo=discord&logoColor=white)](https://discord.gg/s3XVvKNHZE)
 ![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/79903)
 [![Spiget Downloads](https://img.shields.io/spiget/downloads/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
