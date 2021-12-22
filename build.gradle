@@ -68,7 +68,7 @@ dependencies {
     // Here are some opinionated dependencies that might help you with your plugin development:
 
     // Annotation Command Framework: https://github.com/aikar/commands
-    implementation "co.aikar:acf-paper:0.5.0-SNAPSHOT"
+    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
     // Vault (https://github.com/MilkBowl/VaultAPI) for economy, permissions and chat API
     implementation "com.github.MilkBowl:VaultAPI:1.7.1"
 
