@@ -5,9 +5,9 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.0'
-    id 'kr.entree.spigradle' version '2.2.4'
-    id 'io.freefair.lombok' version '6.3.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'kr.entree.spigradle' version '2.4.2'
+    id 'io.freefair.lombok' version '6.5.0.2'
     id 'java'
     id 'jacoco'
     id 'idea'
@@ -73,10 +73,10 @@ dependencies {
     implementation "com.github.MilkBowl:VaultAPI:1.7.1"
 
     // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testImplementation 'org.mockito:mockito-core:4.0.0'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.17:1.7.0'
-    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.mockito:mockito-core:4.6.1'
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.17:1.13.0'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
 }
 
 shadowJar {
