@@ -15,6 +15,7 @@ working/*
 **/debug/**/*
 !working/server.properties
 /.idea/
+debug/
 
 src/**/plugin.yml
 

@@ -10,22 +10,12 @@ jobs:
 
 
     steps:
+      - uses: actions/checkout@v2
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 17
-
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
+          distribution: temurin
 
       - name: Build
         run: ./gradlew build -x test
@@ -33,44 +23,42 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           path: "**/build/libs"
 
   test:
-
     runs-on: ubuntu-18.04
-
     steps:
+      - uses: actions/checkout@v2
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 17
-
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
+          distribution: temurin
 
       - name: Test
         run: ./gradlew test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
+      - name: Acceptance Tests
+        run: ./gradlew cucumber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: deblockt/cucumber-report-annotations-action@v1.8
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          path: "**/cucumber-report.json"
+
       - name: Create Coverage
         run: ./gradlew jacocoTestReport
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload CodeCov Report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v1
         with:
           file: "**/build/reports/jacoco/**/*.xml"
 
@@ -79,41 +67,89 @@ jobs:
         if: always()
         with:
           files: "**/build/test-results/**/*.xml"
+  javadoc:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/release'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Build Javadocs
+        run: ./gradlew javadoc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: gh-pages
+          folder: core/build/docs/javadoc
+          target-folder: javadocs
+
+  docs:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/next'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # required by mike deploy
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+
+      - name: Setup mkdocs deployment
+        run: |
+          git config --global user.name MkDocs Deploy
+          git config --global user.email mkdocs-deploy@users.noreply.github.com
+
+      - name: Deploy Documentation
+        run: mike deploy --prefix docs --push --update-aliases next latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
-    needs: [build, test]
-    if: github.ref == 'refs/heads/master' || 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
+    needs: [ build, test ]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release' || github.ref == 'refs/heads/next'
 
     runs-on: ubuntu-18.04
 
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # required by mike deploy
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 17
+          distribution: temurin
 
       - name: Set up Node.js v16.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: "16.x"
 
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
+      - uses: actions/setup-python@v2
         with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Grant execute permission for update-versions.sh
-        run: chmod +x update-versions.sh
+          python-version: '3.x'
+      
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_URL: "https://api.github.com/"
-        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p gradle-semantic-release-plugin -p semantic-release semantic-release
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @google/semantic-release-replace-plugin -p @semantic-release/exec -p semantic-release semantic-release

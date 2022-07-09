@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "http://checkstyle.org/dtds/suppressions_1_2.dtd">
+<suppressions>
+
+    <!-- no javadoc on test and internal classes -->
+    <suppress files="src[\\/](test|testFixtures|jmh)[\\/]java[\\/].*"
+              checks="(MethodName|FilteringWriteTag|JavadocPackage|MissingJavadoc.*)"/>
+    <suppress
+            files="(platform|bukkit|velocity|bungeecord|features|ui)[\\/]src[\\/]main[\\/]java.*"
+            checks="(FilteringWriteTag|JavadocPackage|MissingJavadoc.*)"/>
+
+    <suppress files=".*[\\/]nbt[\\/](List|Compound)BinaryTag.java" checks="MethodName"/>
+</suppressions>

@@ -286,7 +286,7 @@
 
 ### Features
 
-* **publish:** publish github package to user namespace ([ac38c81](https://github.com/Silthus/spigot-plugin-template/commit/ac38c811219942159901e5a177f71c9bb2e1d22e))
+* **publish:** publish github package to player namespace ([ac38c81](https://github.com/Silthus/spigot-plugin-template/commit/ac38c811219942159901e5a177f71c9bb2e1d22e))
 
 # [1.2.0](https://github.com/Silthus/spigot-plugin-template/compare/v1.1.1...v1.2.0) (2020-05-12)
 
