@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"io.github.silthus.template"},{"l":"io.github.silthus.template.listener"}];updateSearchResults();
