@@ -1,4 +1,4 @@
-site_name: MyPlugin
+site_name: SpigotPluginTemplate
 site_url: https://silthus.github.io/spigot-plugin-template
 site_author: Silthus
 
@@ -10,7 +10,7 @@ copyright: Copyright &copy; 2022 REPLACE_ME
 
 nav:
   - Home:
-    - About MyPlugin: index.md
+    - About Spigot Plugin Template: index.md
     - FAQ: faq.md
   - Getting Started:
     - getting-started.md

@@ -8,6 +8,7 @@ Feature: Example Acceptance Test
     Given I joined the server
     Then I receive the message: "Welcome to our server!"
 
+  @Ignore
   Scenario: User can perform command and receives item
     Given I have the "template.player.diamonds" permission
     When I execute '/template diamonds'
