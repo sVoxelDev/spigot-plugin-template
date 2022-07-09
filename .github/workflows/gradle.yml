@@ -89,7 +89,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: gh-pages
-          folder: core/build/docs/javadoc
+          folder: bukkit/build/docs/javadoc
           target-folder: javadocs
 
   docs:
