@@ -3,8 +3,8 @@
 [![Build Status](https://github.com/Silthus/spigot-plugin-template/workflows/Build/badge.svg)](../../actions?query=workflow%3ABuild)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Silthus/spigot-plugin-template?include_prereleases&label=release)](../../releases)
 ![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/79903)
-[![Spiget Downloads](https://img.shields.io/spiget/downloads/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
-[![Spiget Rating](https://img.shields.io/spiget/rating/79903)](https://www.spigotmc.org/resources/splugintemplate.79903/)
+[![Spiget Downloads](https://img.shields.io/spiget/downloads/79903)](https://www.spigotmc.org/resources/splugin.79903/)
+[![Spiget Rating](https://img.shields.io/spiget/rating/79903)](https://www.spigotmc.org/resources/splugin.79903/)
 [![codecov](https://codecov.io/gh/Silthus/spigot-plugin-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Silthus/spigot-plugin-template)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
@@ -35,7 +35,7 @@ The template or better boilerplate comes with a lot of features that are useful 
 * Integrated [**Spigot test server**](https://github.com/EntryPointKR/Spigradle/) with a one click build, copy plugin and start debugging in IntelliJ task 
 * [**Gradle shadow plugin**](https://imperceptiblethoughts.com/shadow/) to easily ship your needed dependencies with your plugin
 * Example integrations including tests for the [Annotation Command Framework](https://github.com/aikar/commands/) and [Vault](https://github.com/MilkBowl/VaultAPI).
-* **[JUnit 5](https://junit.org/junit5/docs/current/user-guide/)** test setup including [MockBukkit](https://github.com/seeseemelk/MockBukkit) and [AssertJ](https://joel-costigliola.github.io/assertj/)
+* **[JUnit 5](https://junit.org/junit5/docs/current/player-guide/)** test setup including [MockBukkit](https://github.com/seeseemelk/MockBukkit) and [AssertJ](https://joel-costigliola.github.io/assertj/)
 * **[Jacoco](https://github.com/jacoco/jacoco) code coverage** report including an upload task to [codecov](https://codecov.io/) 
 * Fully integrated [**semantic-release**](https://semantic-release.gitbook.io/semantic-release/) release pipeline 
 * Automatic [**changelog generation**](https://github.com/semantic-release/changelog) based on [conventional commit messages](https://www.conventionalcommits.org/)
@@ -170,7 +170,7 @@ You need to configure [authentication for Github Packages](https://help.github.c
 2. Create or update the `gradle.properties` inside `C:\Users\%username%\.gradle` with the following and replace `YOUR_GITHUB_USERNAME` with your Github username and `YOUR_PERSONAL_ACCESS_TOKEN` with the access token from step 1.
 
 ```properties
-gpr.user=YOUR_GITHUB_USERNAME
+gpr.player=YOUR_GITHUB_USERNAME
 gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 ```
 

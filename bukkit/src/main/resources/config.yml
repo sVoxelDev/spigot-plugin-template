@@ -1,0 +1,4 @@
+# Spigot Plugin Template Example Config
+welcome:
+  enabled: true
+  message: "Welcome to our server!"

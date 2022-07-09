@@ -1,20 +1,15 @@
 {
-  "extends": ["config:base"],
-  "gradle": {
-    "enabled": true
-  },
-  "labels": ["dependencies"],
+  "extends": [
+    "config:base"
+  ],
+  "schedule": [
+    "before 2am"
+  ],
+  "timezone": "Europe/Berlin",
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch"
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     }
   ]
 }

@@ -1,0 +1,128 @@
+[versions]
+gradle-plugin-indra = "2.1.1"
+gradle-plugin-testlog = "3.2.0"
+gradle-plugin-lombok = "6.4.1"
+gradle-plugin-shadow = "7.1.2"
+gradle-plugin-cucumber = "0.0.10"
+gradle-plugin-spigradle = "2.4.2"
+
+checkstyle = "9.3"
+checkstyle-plugin-stylecheck = "0.1"
+
+minecraft = "1.19-R0.1-SNAPSHOT"
+bungeecord = "1.16-R0.5-SNAPSHOT"
+velocity = "3.0.1"
+
+protocollib = "4.7.0"
+bstats = "3.0.0"
+mockbukkit = "1.18.1"
+placeholderapi = "2.11.1"
+
+checkerframework = "3.21.3"
+junit-jupiter = "5.8.2"
+junit-platform = "1.8.2"
+assertj = "3.22.0"
+mockito = "4.0.0"
+cucumber = "7.2.3"
+
+event-api = "3.0.0"
+adventure-api = "4.10.0"
+adventure-platform = "4.0.1"
+examination = "1.3.0"
+configurate = "4.1.2"
+cloud-commands = "1.6.2"
+gson = "2.9.0"
+guice = "5.1.0"
+
+[libraries]
+gradle-plugin-indra = { module = "net.kyori:indra-common", version.ref = "gradle-plugin-indra" }
+gradle-plugin-indra-publishing = { module = "net.kyori:indra-publishing-sonatype", version.ref = "gradle-plugin-indra" }
+gradle-plugin-indra-crossdoc = { module = "net.kyori:indra-crossdoc", version.ref = "gradle-plugin-indra" }
+gradle-plugin-testlog = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "gradle-plugin-testlog" }
+gradle-plugin-lombok = { module = "io.freefair.gradle:lombok-plugin", version.ref = "gradle-plugin-lombok" }
+gradle-plugin-shadow = { module = "gradle.plugin.com.github.johnrengelman:shadow", version.ref = "gradle-plugin-shadow" }
+gradle-plugin-cucumber = { module = "se.thinkcode:gradle-cucumber-runner", version.ref = "gradle-plugin-cucumber" }
+gradle-plugin-spigradle = { module = "kr.entree:spigradle", version.ref = "gradle-plugin-spigradle" }
+
+checkstyle-plugin-stylecheck = { module = "ca.stellardrift:stylecheck", version.ref = "checkstyle-plugin-stylecheck" }
+
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
+junit-platform-suite = { module = "org.junit.platform:junit-platform-suite", version.ref = "junit-platform" }
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+mockito = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+
+cucumber = { module = "io.cucumber:cucumber-java", version.ref = "cucumber" }
+cucumber-junit = { module = "io.cucumber:cucumber-junit-platform-engine", version.ref = "cucumber" }
+cucumber-guice = { module = "io.cucumber:cucumber-guice", version.ref = "cucumber" }
+
+guice = { module = "com.google.inject:guice", version.ref = "guice" }
+javax-inject = { module = "javax.inject:javax.inject", version = "1" }
+
+papermc = { module = "io.papermc.paper:paper-api", version.ref = "minecraft" }
+spigot = { module = "org.spigotmc:spigot-api", version.ref = "minecraft" }
+bungeecord = { module = "net.md-5:bungeecord-api", version.ref = "bungeecord" }
+velocity = { module = "com.velocitypowered:velocity-api", version.ref = "velocity" }
+
+checkerframework = { module = "org.checkerframework:checker-qual", version.ref = "checkerframework" }
+
+examination-api = { module = "net.kyori:examination-api", version.ref = "examination" }
+examination-string = { module = "net.kyori:examination-string", version.ref = "examination" }
+
+event = { module = "net.kyori:event-api", version.ref = "event-api" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+adventure-api = { module = "net.kyori:adventure-api", version.ref = "adventure-api" }
+adventure-minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = "adventure-api" }
+adventure-plain = { module = "net.kyori:adventure-text-serializer-plain", version.ref = "adventure-api" }
+adventure-gson = { module = "net.kyori:adventure-text-serializer-gson", version.ref = "adventure-api" }
+adventure-configurate = { module = "net.kyori:adventure-serializer-configurate4", version.ref = "adventure-api" }
+
+adventure-platform = { module = "net.kyori:adventure-platform-api", version.ref = "adventure-platform" }
+adventure-platform-bukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventure-platform" }
+adventure-platform-bungeecord = { module = "net.kyori:adventure-platform-bungeecord", version.ref = "adventure-platform" }
+
+configurate-core = { module = "org.spongepowered:configurate-core", version.ref = "configurate" }
+configurate-yaml = { module = "org.spongepowered:configurate-yaml", version.ref = "configurate" }
+configurate-xml = { module = "org.spongepowered:configurate-xml", version.ref = "configurate" }
+configurate-hocon = { module = "org.spongepowered:configurate-hocon", version.ref = "configurate" }
+configurate-gson = { module = "org.spongepowered:configurate-gson", version.ref = "configurate" }
+
+cloud-commands = { module = "cloud.commandframework:cloud-core", version.ref = "cloud-commands" }
+cloud-annotations = { module = "cloud.commandframework:cloud-annotations", version.ref = "cloud-commands" }
+cloud-commands-paper = { module = "cloud.commandframework:cloud-paper", version.ref = "cloud-commands" }
+
+protocollib = { module = "com.comphenix.protocol:ProtocolLib", version.ref = "protocollib" }
+mockbukkit = { module = "com.github.seeseemelk:MockBukkit-v1.18", version.ref = "mockbukkit" }
+placeholderapi = { module = "me.clip:placeholderapi", version.ref = "placeholderapi" }
+
+bstats-bukkit = { module = "org.bstats:bstats-bukkit", version.ref = "bstats" }
+bstats-velocity = { module = "org.bstats:bstats-velocity", version.ref = "bstats" }
+bstats-bungeecord = { module = "org.bstats:bstats-bungeecord", version.ref = "bstats" }
+
+[bundles]
+testing-api = [
+    "junit-jupiter-api",
+    "junit-jupiter-params",
+    "assertj-core",
+    "mockito",
+]
+testing-runtime = [
+    "junit-jupiter-engine",
+]
+configurate = [
+    "configurate-core",
+    "configurate-yaml",
+    "configurate-xml",
+    "configurate-hocon",
+    "configurate-gson",
+    "adventure-configurate"
+]
+cloud-commands = [
+    "cloud-commands",
+    "cloud-annotations"
+]
+
+[plugins]
+indra-publishing-sonatype = { id = "net.kyori.indra.publishing.sonatype", version.ref = "gradle-plugin-indra" }

@@ -1,0 +1,88 @@
+site_name: SpigotPluginTemplate
+site_url: https://silthus.github.io/spigot-plugin-template
+site_author: Silthus
+
+repo_name: Silthus/spigot-plugin-template
+repo_url: https://github.com/Silthus/spigot-plugin-template
+edit_uri: edit/next/docs/
+
+copyright: Copyright &copy; 2022 REPLACE_ME
+
+nav:
+  - Home:
+    - About Spigot Plugin Template: index.md
+    - FAQ: faq.md
+  - Getting Started:
+    - getting-started.md
+    - Commands: commands.md
+    - Permissions: permissions.md
+  - Configuration:
+    - configuration/index.md
+    - Reference: configuration/reference.md
+  - Developer API:
+    - Developer API: developer/index.md
+  - Javadocs: https://silthus.github.io/javadocs/" target="_blank
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  custom_dir: docs/overrides
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)" 
+      scheme: default
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)" 
+      scheme: slate
+      primary: black
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - header.autohide
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+        permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+extra:
+  version:
+    provider: mike
