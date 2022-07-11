@@ -6,7 +6,7 @@ buildscript {
 
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.0'
-    id 'kr.entree.spigradle' version '2.2.4'
+    id 'kr.entree.spigradle' version '2.4.2'
     id 'io.freefair.lombok' version '6.3.0'
     id 'java'
     id 'jacoco'
