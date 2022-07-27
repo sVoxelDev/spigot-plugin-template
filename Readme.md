@@ -42,7 +42,7 @@ The template or better boilerplate comes with a lot of features that are useful 
 * [**Github Actions**](https://github.com/features/actions) workflow for build and release
 * Publishing of **maven artifacts** to [GitHub Packages](https://github.com/features/packages)
   > no more need for self hosted nexus or artifactory server
-* ![new](docs/assets/new_icon.png | height=16px) Publish to Maven Central 
+* ![new](docs/assets/new_icon.png) Publish to Maven Central 
 * GitHub [**issue templates**](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository) for bug and feature requests
 * Contributing and Code of Conduct **guidelines**
 * Nice [**badges**](https://shields.io) to show of your project
