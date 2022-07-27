@@ -2,47 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/commands/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/faq/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/getting-started/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/permissions/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/configuration/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/configuration/reference/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/developer/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://silthus.github.io/spigot-plugin-template/next/partials/_config/</loc>
-         <lastmod>2022-07-09</lastmod>
+         <lastmod>2022-07-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
