@@ -5,9 +5,9 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.0'
-    id 'kr.entree.spigradle' version '2.2.4'
-    id 'io.freefair.lombok' version '6.3.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'kr.entree.spigradle' version '2.4.3'
+    id 'io.freefair.lombok' version '6.6.1'
     id 'java'
     id 'jacoco'
     id 'idea'
@@ -36,6 +36,7 @@ spigot {
     load = STARTUP
     // depends = ['']
     softDepends = ['Vault']
+    excludeLibraries = ['*']
 }
 
 compileJava {
@@ -51,39 +52,40 @@ repositories {
     mavenLocal()
     mavenCentral()
     spigot()
-    maven { url = 'https://jitpack.io' }
+    bungeecord()
+    paper()
+    essentialsX()
+    bStats()
+    enginehub()
+    protocolLib()
     maven { url = 'https://repo.aikar.co/content/groups/aikar/' }
-    maven { url = 'https://repo.dmulloy2.net/repository/public/' }
-    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/public/' }
-    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    jitpack()
 }
 
 dependencies {
-    // using spigot-api
-    implementation spigot(mcVersion)
-    // or using paper-api
-    // implementation "io.papermc.paper:paper-api:${mcVersion}-R0.1-SNAPSHOT"
+    // using using paper-api
+    implementation paper(mcVersion)
 
     // Add your dependencies here
     // Here are some opinionated dependencies that might help you with your plugin development:
 
     // Annotation Command Framework: https://github.com/aikar/commands
-    implementation "co.aikar:acf-paper:0.5.0-SNAPSHOT"
+    // Use shadow to shade the library into your plugin
+    shadow "co.aikar:acf-paper:0.5.1-SNAPSHOT"
     // Vault (https://github.com/MilkBowl/VaultAPI) for economy, permissions and chat API
-    implementation "com.github.MilkBowl:VaultAPI:1.7.1"
+    // this dependency needs to be present at runtime, meaning Vault.jar needs to be in your plugins folder
+    implementation vaultAll()
 
     // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testImplementation 'org.mockito:mockito-core:4.0.0'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.17:1.7.0'
-    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.mockito:mockito-core:4.11.0'
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.144.3'
+    testImplementation 'org.assertj:assertj-core:3.24.1'
 }
 
 shadowJar {
     classifier = ''
-    dependencies {
-        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
-    }
+    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
     relocate 'co.aikar.commands', "${packageName}.acf"
     relocate 'co.aikar.locales', "${packageName}.locales"
 }

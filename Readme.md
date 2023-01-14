@@ -58,8 +58,11 @@ The template or better boilerplate comes with a lot of features that are useful 
 * **Delete** the  `CHANGELOG.md`. It will be generated on your [first release](#releasing-a-new-version-of-your-plugin).
 * **Update** the `README` to point to your project and spigot resource id.
 * **Rename** the java package and plugin to match your project.
-* Then execute the `Server` run configuration and the template will run the Spigot BuildTools to download and build spigot or paper for you.
+* Then execute the `prepareSpigotPlugins` gradle task this will try to download all plugin denpendencies and puts them into `debug/spigot/plugins/`.
+* **Start** the Minecraft server by executing the `debugPaper` task. This will start the server in the background and you can connect to it using the `localhost:25565` address.
 * **Code away :)** - *and once you are ready, push your commit (in [conventional commit style](#commit-message-format)) to master.*
+
+![Gradle tasks](docs/gradle-tasks.png)
 
 Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting any pull requests or opening issues.
 

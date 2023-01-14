@@ -15,7 +15,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.server.ServiceRegisterEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
@@ -24,7 +26,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Objects;
 
-@PluginMain
 public class TemplatePlugin extends JavaPlugin implements Listener {
 
     @Getter
@@ -60,11 +61,26 @@ public class TemplatePlugin extends JavaPlugin implements Listener {
         getLogger().info("Player joined.");
     }
 
+    @EventHandler
+    public void onServiceRegistration(ServiceRegisterEvent event) {
+        if (event.getProvider().getService() == Economy.class) {
+            setVault(new VaultProvider((Economy) event.getProvider().getProvider()));
+            getLogger().info("Vault integration enabled.");
+        }
+    }
+
     private void setupVaultIntegration() {
         if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            vault = new VaultProvider(Objects.requireNonNull(getServer().getServicesManager().getRegistration(Economy.class)).getProvider());
-        } else {
+            final RegisteredServiceProvider<Economy> serviceProvider = getServer().getServicesManager()
+                .getRegistration(Economy.class);
+            if (serviceProvider != null) {
+                vault = new VaultProvider(Objects.requireNonNull(serviceProvider).getProvider());
+                getLogger().info("Vault integration enabled.");
+            }
+        }
+        if (vault == null) {
             vault = new VaultProvider();
+            getLogger().warning("Vault integration is not yet available.");
         }
     }
 
