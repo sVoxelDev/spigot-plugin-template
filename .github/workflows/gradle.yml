@@ -3,7 +3,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     # We want to run on external PRs, but not on our own internal PRs as they'll be run
     # by the push to the branch.
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
@@ -39,7 +39,7 @@ jobs:
 
   test:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Set up JDK 17
@@ -84,7 +84,7 @@ jobs:
     needs: [build, test]
     if: github.ref == 'refs/heads/master' || 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Set up JDK 17
