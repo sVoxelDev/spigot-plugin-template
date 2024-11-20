@@ -2,12 +2,10 @@ name: Build
 on: [push]
 jobs:
   build:
-
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     # We want to run on external PRs, but not on our own internal PRs as they'll be run
     # by the push to the branch.
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
-
 
     steps:
       - name: Set up JDK 17
@@ -35,11 +33,10 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: "**/build/libs"
+          path: '**/build/libs'
 
   test:
-
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Set up JDK 17
@@ -63,7 +60,7 @@ jobs:
         run: ./gradlew test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Create Coverage
         run: ./gradlew jacocoTestReport
         env:
@@ -72,19 +69,19 @@ jobs:
       - name: Upload CodeCov Report
         uses: codecov/codecov-action@v3
         with:
-          file: "**/build/reports/jacoco/**/*.xml"
+          file: '**/build/reports/jacoco/**/*.xml'
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.24
         if: always()
         with:
-          files: "**/build/test-results/**/*.xml"
+          files: '**/build/test-results/**/*.xml'
 
   release:
     needs: [build, test]
     if: github.ref == 'refs/heads/master' || 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Set up JDK 17
@@ -95,7 +92,7 @@ jobs:
       - name: Set up Node.js v16.x
         uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: '16.x'
 
       - name: Cache Gradle
         id: cache-gradle
@@ -115,5 +112,5 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_URL: "https://api.github.com/"
+          GH_URL: 'https://api.github.com/'
         run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p gradle-semantic-release-plugin -p semantic-release semantic-release
