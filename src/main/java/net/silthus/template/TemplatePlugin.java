@@ -40,6 +40,7 @@ public class TemplatePlugin extends JavaPlugin implements Listener {
         instance = this;
     }
 
+    @SuppressWarnings("removal")
     public TemplatePlugin(
             JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
         super(loader, description, dataFolder, file);

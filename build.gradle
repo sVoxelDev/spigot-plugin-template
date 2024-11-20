@@ -44,6 +44,10 @@ compileJava {
     options.compilerArgs += ["-parameters"]
     options.fork = true
     options.forkOptions.executable = 'javac'
+    options.compilerArgs += [
+        '--release', '17',
+        '-Xlint:deprecation'
+    ]
 }
 
 archivesBaseName = project.property("pluginName")
@@ -77,10 +81,15 @@ dependencies {
     implementation vaultAll()
 
     // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.144.3'
     testImplementation 'org.assertj:assertj-core:3.24.1'
+    
+    // Add these for test compilation
+    testImplementation project.shadow
+    testImplementation project.configurations.shadow
 }
 
 shadowJar {
@@ -98,8 +107,12 @@ test {
     useJUnitPlatform()
     testLogging {
         events "skipped", "failed"
+        exceptionFormat = 'full'
+        showStandardStreams = true
     }
-    ignoreFailures = false
+    
+    // Add this to ensure test dependencies are available
+    systemProperty 'java.class.path', sourceSets.test.runtimeClasspath.asPath
 }
 
 processResources {
