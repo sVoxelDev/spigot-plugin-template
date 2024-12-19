@@ -7,7 +7,7 @@ buildscript {
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'kr.entree.spigradle' version '2.4.3'
-    id 'io.freefair.lombok' version '6.6.1'
+    id 'io.freefair.lombok' version '6.6.3'
     id 'java'
     id 'jacoco'
     id 'idea'
@@ -81,11 +81,11 @@ dependencies {
     implementation vaultAll()
 
     // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
     testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.144.3'
-    testImplementation 'org.assertj:assertj-core:3.24.1'
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.147.2'
+    testImplementation 'org.assertj:assertj-core:3.27.0'
 }
 
 shadowJar {
