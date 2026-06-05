@@ -72,7 +72,7 @@ jobs:
           file: '**/build/reports/jacoco/**/*.xml'
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.24
+        uses: EnricoMi/publish-unit-test-result-action@v1.40
         if: always()
         with:
           files: '**/build/test-results/**/*.xml'
