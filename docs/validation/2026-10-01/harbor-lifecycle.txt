@@ -1,0 +1,42 @@
+harbor/latest/final.log
+[06:44:40] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:46] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:44:49] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/latest/invalid-startup.log
+[06:44:27] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:33] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:44:33] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:44:33] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/latest/recovery.log
+[06:44:40] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:46] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:44:49] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/latest/reload.log
+[06:43:59] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:05] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:44:08] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/latest/restart.log
+[06:44:14] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:20] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:44:23] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/stable/final.log
+[06:45:44] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:49] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:45:52] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/stable/invalid-startup.log
+[06:45:31] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:36] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:45:36] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:45:36] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/stable/recovery.log
+[06:45:44] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:49] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:45:52] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/stable/reload.log
+[06:44:59] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:05] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:45:13] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT
+harbor/stable/restart.log
+[06:45:17] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:23] [Server thread/INFO]: Enabling HarborPlugin v1.0.0-SNAPSHOT
+[06:45:26] [Server thread/INFO]: Disabling HarborPlugin v1.0.0-SNAPSHOT

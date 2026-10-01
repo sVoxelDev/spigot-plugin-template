@@ -1,0 +1,42 @@
+template/latest/final.log
+[06:44:45] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:51] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:44:54] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/latest/invalid-startup.log
+[06:44:32] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:38] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:44:38] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:44:38] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/latest/recovery.log
+[06:44:45] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:51] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:44:54] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/latest/reload.log
+[06:44:05] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:11] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:44:14] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/latest/restart.log
+[06:44:19] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:44:24] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:44:27] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/stable/final.log
+[06:45:48] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:54] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:45:57] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/stable/invalid-startup.log
+[06:45:35] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:41] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:45:41] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:45:41] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/stable/recovery.log
+[06:45:48] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:54] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:45:57] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/stable/reload.log
+[06:45:03] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:09] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:45:18] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT
+template/stable/restart.log
+[06:45:22] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:45:28] [Server thread/INFO]: Enabling TemplatePlugin v6.0.0-SNAPSHOT
+[06:45:31] [Server thread/INFO]: Disabling TemplatePlugin v6.0.0-SNAPSHOT

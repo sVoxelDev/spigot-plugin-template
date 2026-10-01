@@ -384,7 +384,8 @@ def initialize(args):
     if not re.fullmatch(r"[A-Za-z0-9_ .-]{1,64}", args.author):
         raise RuntimeError("Author must be 1-64 letters, digits, spaces, underscores, dots, or hyphens.")
     props = properties()
-    if props["packageName"] == args.package and props["pluginName"] == args.name and props["commandName"] == args.command:
+    same_identity = props["packageName"] == args.package and props["pluginName"] == args.name and props["commandName"] == args.command
+    if same_identity and props["author"] == args.author:
         print("Template already has this identity.")
         return
     moves = []
@@ -404,7 +405,8 @@ def initialize(args):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.move(staged, target)
     replacements = {"group": args.package.rsplit(".", 1)[0], "packageName": args.package,
-                    "pluginName": args.name, "commandName": args.command, "author": args.author, "version": "1.0.0-SNAPSHOT"}
+                    "pluginName": args.name, "commandName": args.command, "author": args.author,
+                    "version": props["version"] if same_identity else "1.0.0-SNAPSHOT"}
     text = (ROOT / "gradle.properties").read_text()
     for key, value in replacements.items():
         text = re.sub(rf"^{key}=.*$", f"{key}={value}", text, flags=re.MULTILINE)
@@ -416,11 +418,16 @@ def initialize(args):
 JAVA_KEYWORDS = set("abstract assert boolean break byte case catch char class const continue default do double else enum extends final finally float for goto if implements import instanceof int interface long native new package private protected public return short static strictfp super switch synchronized this throw throws transient try void volatile while true false null _".split())
 
 
-def latest_candidates():
+def paper_release_versions():
     project = request_json("https://fill.papermc.io/v3/projects/paper")
     versions = [version for group in project["versions"].values() for version in group
                 if re.fullmatch(r"\d+(?:\.\d+)+", version)]
     versions.sort(key=lambda version: tuple(map(int, version.split("."))), reverse=True)
+    return versions
+
+
+def latest_candidates():
+    versions = paper_release_versions()
     selected = {}
     for version in versions:
         builds = request_json(f"https://fill.papermc.io/v3/projects/paper/versions/{version}/builds")
@@ -435,6 +442,9 @@ def latest_candidates():
 
 def versions():
     candidates = latest_candidates()
+    upstream_version = paper_release_versions()[0]
+    upstream_paper = request_json(f"https://fill.papermc.io/v3/projects/paper/versions/{upstream_version}/builds/latest")
+    upstream_minecraft = request_json("https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")["latest"]
     current = properties()
     dependencies = {}
     for property_name, coordinate in {
@@ -453,6 +463,8 @@ def versions():
         except OSError as exception:
             dependencies[property_name] = {"pinned": current[property_name], "error": str(exception), "source": url}
     print(json.dumps({"pinned": config()["servers"], "available": candidates,
+                      "upstream": {"minecraft": upstream_minecraft, "paper": {"version": upstream_version, **upstream_paper}},
+                      "latest_release_supported": candidates["latest"]["version"] == upstream_minecraft["release"],
                       "dependencies": dependencies,
                       "gradle": request_json("https://services.gradle.org/versions/current")}, indent=2))
 

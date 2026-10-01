@@ -51,6 +51,15 @@ class TemplateToolTest(unittest.TestCase):
         template.initialize(self.args)
         self.assertTrue((self.root / "src/main/java/net/silthus/template/welcome/TemplatePlugin.java").is_file())
 
+    def test_corrected_author_is_applied_without_resetting_an_existing_version(self):
+        template.initialize(self.args)
+        props = self.root / "gradle.properties"
+        props.write_text(props.read_text().replace("version=1.0.0-SNAPSHOT", "version=2.0.0"))
+        self.args.author = "Alex Builder"
+        template.initialize(self.args)
+        self.assertEqual("Alex Builder", template.properties()["author"])
+        self.assertEqual("2.0.0", template.properties()["version"])
+
     def test_invalid_identity_leaves_files_unchanged(self):
         before = {path.relative_to(self.root): path.read_bytes() for path in self.root.rglob("*") if path.is_file()}
         for field, value in (("name", "../Bad"), ("package", "io.github.class.welcome"),

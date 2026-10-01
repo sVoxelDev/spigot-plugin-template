@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "local_server": {
+    "first_start": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \nReusing configuration cache.\n> Task :processTestResources NO-SOURCE\n> Task :processResources UP-TO-DATE\n> Task :sourcesJar UP-TO-DATE\n> Task :compileJava UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :jar UP-TO-DATE\n> Task :compileTestJava UP-TO-DATE\n> Task :testClasses UP-TO-DATE\n> Task :javadoc UP-TO-DATE\n> Task :javadocJar UP-TO-DATE\n> Task :assemble UP-TO-DATE\n> Task :test UP-TO-DATE\n> Task :check UP-TO-DATE\n> Task :build UP-TO-DATE\n> Task :jacocoTestReport UP-TO-DATE\n\nBUILD SUCCESSFUL in 3s\n9 actionable tasks: 9 up-to-date\nConfiguration cache entry reused.\nWaiting for paper-dev-ba088effec0e to become healthy...\nWelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m\nPaper 26.2 (STABLE) at localhost:25569\nUse ./template rcon <command>, ./template logs, and ./template down.\n",
+    "port_bindings": {
+      "25565/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "25569"
+        }
+      ]
+    },
+    "changed_status": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\n",
+    "restart": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \nReusing configuration cache.\n> Task :processTestResources NO-SOURCE\n> Task :processResources UP-TO-DATE\n> Task :sourcesJar UP-TO-DATE\n> Task :compileJava UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :jar UP-TO-DATE\n> Task :compileTestJava UP-TO-DATE\n> Task :testClasses UP-TO-DATE\n> Task :javadoc UP-TO-DATE\n> Task :javadocJar UP-TO-DATE\n> Task :assemble UP-TO-DATE\n> Task :test UP-TO-DATE\n> Task :check UP-TO-DATE\n> Task :build UP-TO-DATE\n> Task :jacocoTestReport UP-TO-DATE\n\nBUILD SUCCESSFUL in 3s\n9 actionable tasks: 9 up-to-date\nConfiguration cache entry reused.\nWaiting for paper-dev-ba088effec0e to become healthy...\nWelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\nPaper 26.2 (STABLE) at localhost:25569\nUse ./template rcon <command>, ./template logs, and ./template down.\n",
+    "persisted_status": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\n",
+    "preserved_reports": 30
+  }
+}

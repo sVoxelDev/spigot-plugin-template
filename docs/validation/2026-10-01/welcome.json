@@ -1,0 +1,240 @@
+{
+  "status": "passed",
+  "started_at": "20261001T065220Z-3cc2d1",
+  "build_skipped": false,
+  "server_image": "itzg/minecraft-server:2026.9.2-java25@sha256:de5d1b1a83eba576f6c8a688fac2a3523ce457724cdebc8ea48d7818b74cdf6e",
+  "servers": [
+    {
+      "profile": "latest",
+      "pin": {
+        "version": "26.3",
+        "build": 140,
+        "channel": "BETA",
+        "sha256": "98aabc113a80b9b5e183475e839a17cf99c39c915a1f46b8f35a5e89fd5de0f1",
+        "url": "https://fill-data.papermc.io/v1/objects/98aabc113a80b9b5e183475e839a17cf99c39c915a1f46b8f35a5e89fd5de0f1/paper-26.3-140.jar"
+      },
+      "checks": [
+        {
+          "phase": "fresh",
+          "check": "actual Paper version/build",
+          "expected": "Loading Paper 26\\.3-140[- ]"
+        },
+        {
+          "phase": "fresh",
+          "command": "version WelcomePlugin",
+          "response": "WelcomePlugin version \u001b[32m1.0.0-SNAPSHOT\u001b[0m\n\u001b[0mA Paper plugin with a configurable greeting and player information.\n\u001b[0mAuthor: \u001b[32mAlex\n\u001b[0m",
+          "expected": "1.0.0-SNAPSHOT"
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled."
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome",
+          "response": "Usage: /welcome [info|status|reload]\n\u001b[0m",
+          "expected": "Usage: /welcome"
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome info",
+          "response": "Only players can use this command.\n\u001b[0m",
+          "expected": "Only players can use this command."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration reloaded.\n\u001b[0m",
+          "expected": "Configuration reloaded."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration was not reloaded: while parsing a flow sequence\n\u001b[0m in 'reader', line 1, column 11:\n\u001b[0m    greeting: [broken\n\u001b[0m              ^\n\u001b[0mexpected ',' or ']', but got <stream end>\n\u001b[0m in 'reader', line 2, column 1:\n\u001b[0m    \n\u001b[0m    ^\n\u001b[0m\n\u001b[0m",
+          "expected": "Configuration was not reloaded:"
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration was not reloaded: greeting.enabled must be true or false\n\u001b[0m",
+          "expected": "greeting.enabled must be true or false"
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "restart",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "restart",
+          "command": "welcome reload",
+          "response": "Configuration reloaded.\n\u001b[0m",
+          "expected": "Configuration reloaded."
+        },
+        {
+          "phase": "invalid-startup",
+          "command": "plugins",
+          "response": "\u00a7x\u001b[36m\u001b[31m\u001b[34m\u001b[37m\u001b[35m\u001b[32m\u2139 \u001b[37mServer Plugins (1):\n\u001b[0m\u00a7x\u001b[33m\u001b[35m\u001b[30m\u001b[34m\u001b[30m\u001b[33mBukkit Plugins:\n\u001b[0m \u001b[30m- \u001b[31mWelcomePlugin\n\u001b[0m",
+          "expected": "WelcomePlugin"
+        },
+        {
+          "phase": "invalid-startup",
+          "check": "invalid configuration disables the plugin",
+          "result": "passed"
+        },
+        {
+          "phase": "recovery",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled."
+        }
+      ],
+      "status": "passed",
+      "image_id": "sha256:de5d1b1a83eba576f6c8a688fac2a3523ce457724cdebc8ea48d7818b74cdf6e",
+      "java": "openjdk version \"25.0.4\" 2026-07-21 LTS\nOpenJDK Runtime Environment Temurin-25.0.4+7 (build 25.0.4+7-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.4+7 (build 25.0.4+7-LTS, mixed mode, sharing)",
+      "logs": [
+        "reload.log",
+        "restart.log",
+        "invalid-startup.log",
+        "recovery.log"
+      ]
+    },
+    {
+      "profile": "stable",
+      "pin": {
+        "version": "26.2",
+        "build": 129,
+        "channel": "STABLE",
+        "sha256": "b1d8f6bfa1b6101fa8e947b53041cb3bdf5540e7b83b6547ca19ba7edefeb083",
+        "url": "https://fill-data.papermc.io/v1/objects/b1d8f6bfa1b6101fa8e947b53041cb3bdf5540e7b83b6547ca19ba7edefeb083/paper-26.2-129.jar"
+      },
+      "checks": [
+        {
+          "phase": "fresh",
+          "check": "actual Paper version/build",
+          "expected": "Loading Paper 26\\.2-129[- ]"
+        },
+        {
+          "phase": "fresh",
+          "command": "version WelcomePlugin",
+          "response": "WelcomePlugin version \u001b[32m1.0.0-SNAPSHOT\u001b[0m\n\u001b[0mA Paper plugin with a configurable greeting and player information.\n\u001b[0mAuthor: \u001b[32mAlex\n\u001b[0m",
+          "expected": "1.0.0-SNAPSHOT"
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled."
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome",
+          "response": "Usage: /welcome [info|status|reload]\n\u001b[0m",
+          "expected": "Usage: /welcome"
+        },
+        {
+          "phase": "fresh",
+          "command": "welcome info",
+          "response": "Only players can use this command.\n\u001b[0m",
+          "expected": "Only players can use this command."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration reloaded.\n\u001b[0m",
+          "expected": "Configuration reloaded."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration was not reloaded: while parsing a flow sequence\n\u001b[0m in 'reader', line 1, column 11:\n\u001b[0m    greeting: [broken\n\u001b[0m              ^\n\u001b[0mexpected ',' or ']', but got <stream end>\n\u001b[0m in 'reader', line 2, column 1:\n\u001b[0m    \n\u001b[0m    ^\n\u001b[0m\n\u001b[0m",
+          "expected": "Configuration was not reloaded:"
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "reload",
+          "command": "welcome reload",
+          "response": "Configuration was not reloaded: greeting.enabled must be true or false\n\u001b[0m",
+          "expected": "greeting.enabled must be true or false"
+        },
+        {
+          "phase": "reload",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "restart",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled."
+        },
+        {
+          "phase": "restart",
+          "command": "welcome reload",
+          "response": "Configuration reloaded.\n\u001b[0m",
+          "expected": "Configuration reloaded."
+        },
+        {
+          "phase": "invalid-startup",
+          "command": "plugins",
+          "response": "\u00a7x\u001b[36m\u001b[31m\u001b[34m\u001b[37m\u001b[35m\u001b[32m\u2139 \u001b[37mServer Plugins (1):\n\u001b[0m\u00a7x\u001b[33m\u001b[35m\u001b[30m\u001b[34m\u001b[30m\u001b[33mBukkit Plugins:\n\u001b[0m \u001b[30m- \u001b[31mWelcomePlugin\n\u001b[0m",
+          "expected": "WelcomePlugin"
+        },
+        {
+          "phase": "invalid-startup",
+          "check": "invalid configuration disables the plugin",
+          "result": "passed"
+        },
+        {
+          "phase": "recovery",
+          "command": "welcome status",
+          "response": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m",
+          "expected": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled."
+        }
+      ],
+      "status": "passed",
+      "image_id": "sha256:de5d1b1a83eba576f6c8a688fac2a3523ce457724cdebc8ea48d7818b74cdf6e",
+      "java": "openjdk version \"25.0.4\" 2026-07-21 LTS\nOpenJDK Runtime Environment Temurin-25.0.4+7 (build 25.0.4+7-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.4+7 (build 25.0.4+7-LTS, mixed mode, sharing)",
+      "logs": [
+        "reload.log",
+        "restart.log",
+        "invalid-startup.log",
+        "recovery.log"
+      ]
+    }
+  ],
+  "jar": "WelcomePlugin-1.0.0-SNAPSHOT.jar",
+  "jar_sha256": "58e5e479cbf48beabbeda90d895d95492487cad39f8cfa92056220d58ac9f878"
+}

@@ -1,0 +1,42 @@
+welcome/latest/final.log
+[06:53:30] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:53:35] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:53:38] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/latest/invalid-startup.log
+[06:53:16] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:53:22] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:53:22] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:53:22] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/latest/recovery.log
+[06:53:30] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:53:35] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:53:38] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/latest/reload.log
+[06:52:49] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:52:55] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:52:58] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/latest/restart.log
+[06:53:03] [ServerMain/INFO]: Loading Paper 26.3-140-main@977da0d (2026-09-29T16:11:19Z) for Minecraft 26.3
+[06:53:09] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:53:12] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/stable/final.log
+[06:54:33] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:54:39] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:54:42] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/stable/invalid-startup.log
+[06:54:20] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:54:26] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:54:26] [Server thread/ERROR]: Invalid configuration: greeting.message must be a nonempty string
+[06:54:26] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/stable/recovery.log
+[06:54:33] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:54:39] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:54:42] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/stable/reload.log
+[06:53:48] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:53:55] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:54:02] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT
+welcome/stable/restart.log
+[06:54:07] [ServerMain/INFO]: Loading Paper 26.2-129-ver/26.2@9240f58 (2026-09-23T18:49:01Z) for Minecraft 26.2
+[06:54:13] [Server thread/INFO]: Enabling WelcomePlugin v1.0.0-SNAPSHOT
+[06:54:16] [Server thread/INFO]: Disabling WelcomePlugin v1.0.0-SNAPSHOT

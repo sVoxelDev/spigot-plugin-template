@@ -62,13 +62,13 @@ Reports, command responses, jar checksums, and logs live in `build/validation/<r
 
 Player greetings, permissions, and playtime use MockBukkit. Docker checks use real Paper and RCON; they do not log in a real player. Add an appropriate client or server integration test for gameplay beyond this example. [The behavior contract](docs/behavior-contract.md) defines independent agent checks.
 
-`python3 scripts/agent-test.py --accept-eula` exercises the documented setup flow in an isolated copy. It personalizes a `WelcomePlugin`, checks invalid input, and runs the full server matrix. Evidence stays in `build/agent-validation/`. CI runs both the original and personalized template workflows.
+`python3 scripts/agent-test.py --accept-eula` exercises the documented setup flow in an isolated copy. It personalizes a `WelcomePlugin`, checks invalid input, runs the full server matrix, and tests local server commands, port isolation, persisted settings, report retention, and cleanup. Evidence stays in `build/agent-validation/`. CI runs both the original and personalized template workflows.
 
 ## Install and maintain
 
 Follow [deployment instructions](docs/deployment.md) to copy the validated jar to an existing Paper server or provision a Docker host. Use a full server restart to load a new jar. `reload` only changes this plugin's settings.
 
-Run `./template versions` to compare pins with current official releases without changing them. Dependency PRs run the same validation as feature PRs. Update coupled Paper URL, checksum, version, and build fields in `template.json` together. Keep the minimum API compatible with every advertised server profile.
+Run `./template versions` to compare pins with current official releases without changing them. It reports Mojang's newest release and Paper's newest build separately from the newest accepted beta/stable lanes, so an alpha-only release remains visible. Dependency PRs run the same validation as feature PRs. Update coupled Paper URL, checksum, version, and build fields in `template.json` together. Keep the minimum API compatible with every advertised server profile.
 
 GitHub Actions builds and tests pushes and PRs, validates both Paper profiles, and uploads reports and jars. Publishing a `v*` tag runs the same gates and creates a GitHub Release with the installable jar and source/documentation jars. Set `version` in `gradle.properties` to match the release tag before pushing it. Maven publishing remains available through `./gradlew publishToMavenLocal` or `publish` with GitHub Packages credentials.
 
