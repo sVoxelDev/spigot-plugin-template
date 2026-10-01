@@ -16,7 +16,7 @@ Each matrix checks the actual server build, plugin identity, help/info/status co
 
 The original local run built and tested the plugin. HarborPlugin's retained matrix used `--skip-build`; its earlier full run built and tested the same jar. The report records that distinction. Server jars were verified against their pinned SHA-256 before execution.
 
-[12 focused MockBukkit cases](validation/2026-10-01/unit-tests.json) pass with zero failures, errors, or skipped tests. The tooling suite has 10 passing tests, including identity changes, invalid input preservation, checksum rejection, and failure reporting. [The personalized workflow evidence](validation/2026-10-01/workflow.json) also proves local up/rcon/reload/restart/down, localhost port binding, private RCON, report retention, and container cleanup. CI runs that workflow from a fresh isolated copy.
+[12 focused MockBukkit cases](validation/2026-10-01/unit-tests.json) pass with zero failures, errors, or skipped tests. [The tooling suite has 10 passing tests](validation/2026-10-01/tooling-tests.txt), including identity changes, invalid input preservation, checksum rejection, and failure reporting. [The personalized workflow evidence](validation/2026-10-01/workflow.json) also proves local up/rcon/reload/restart/down, localhost port binding, private RCON, report retention, and container cleanup. CI runs that workflow from a fresh isolated copy.
 
 ## Independent probes
 
