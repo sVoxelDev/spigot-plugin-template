@@ -1,0 +1,17 @@
+name: '${pluginName}'
+version: '${version}'
+main: '${packageName}.TemplatePlugin'
+api-version: '${apiVersion}'
+authors: ['${author}']
+description: A Paper plugin with a configurable greeting and player information.
+commands:
+  ${commandName}:
+    description: Show player information or manage the plugin.
+    usage: '/${commandName} [info|status|reload]'
+permissions:
+  ${commandName}.admin.status:
+    description: View plugin status.
+    default: op
+  ${commandName}.admin.reload:
+    description: Reload plugin configuration.
+    default: op

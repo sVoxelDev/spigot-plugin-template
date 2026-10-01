@@ -1,32 +1,24 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: "[BUG]"
+about: Report a template, build, or plugin validation failure
+title: '[BUG] '
 labels: ''
 assignees: ''
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+Describe the expected behavior and what happened instead.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Reproduction
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Include the command or prompt you used, any template customizations, and the steps to reproduce the failure.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Environment
 
-**Server Information (please complete the following information):**
-- Server version (`/bukkit:version`): 
-- Installed plugins (`/bukkit:plugins`): 
-- WorldGuard Report Pastebin Link (`/wg report -p`): 
+- Operating system and architecture:
+- Python and Docker versions (`./template doctor`):
+- Paper version, build, and channel:
+- Template commit or release:
 
-**Additional context**
-Add any other context about the problem here.
+## Evidence
+
+Attach the relevant `build/validation/<run>/results.json`, profile results, and redacted server logs. For a build failure, include the failing task and error output. Keep passwords, tokens, server addresses, and unrelated player data out of the report.

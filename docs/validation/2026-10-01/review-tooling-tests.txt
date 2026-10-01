@@ -1,0 +1,26 @@
+test_corrected_author_is_applied_without_resetting_an_existing_version (test_template.TemplateToolTest.test_corrected_author_is_applied_without_resetting_an_existing_version) ... ok
+test_expected_invalid_config_cannot_hide_other_errors (test_template.TemplateToolTest.test_expected_invalid_config_cannot_hide_other_errors) ... ok
+test_failures_before_server_start_still_produce_a_report (test_template.TemplateToolTest.test_failures_before_server_start_still_produce_a_report) ... Configured WelcomePlugin (io.github.alex.welcome), /welcome. Run ./template validate --accept-eula.
+Configured WelcomePlugin (io.github.alex.welcome), /welcome. Run ./template validate --accept-eula.
+Validation evidence: /tmp/tmpl94pq4pb/build/validation/20261001T091336Z-09bc40
+ok
+test_invalid_identity_leaves_files_unchanged (test_template.TemplateToolTest.test_invalid_identity_leaves_files_unchanged) ... ok
+test_invalid_startup_cannot_pass_when_disable_only_happens_at_shutdown (test_template.TemplateToolTest.test_invalid_startup_cannot_pass_when_disable_only_happens_at_shutdown) ... ok
+test_package_can_be_nested_under_the_old_package (test_template.TemplateToolTest.test_package_can_be_nested_under_the_old_package) ... ok
+test_paper_checksum_failure_leaves_no_executable_jar (test_template.TemplateToolTest.test_paper_checksum_failure_leaves_no_executable_jar) ... Configured WelcomePlugin (net.silthus.template.welcome), /welcome. Run ./template validate --accept-eula.
+Downloading Paper 26.2 build 129 (STABLE)
+ok
+test_personalized_source_and_metadata_have_matching_identity (test_template.TemplateToolTest.test_personalized_source_and_metadata_have_matching_identity) ... ok
+test_renamed_entrypoint_matches_source_descriptor_and_packaged_class (test_template.TemplateToolTest.test_renamed_entrypoint_matches_source_descriptor_and_packaged_class) ... ok
+test_start_does_not_remove_a_preexisting_container (test_template.TemplateToolTest.test_start_does_not_remove_a_preexisting_container) ... ok
+test_unavailable_docker_is_recorded_as_a_failed_validation (test_template.TemplateToolTest.test_unavailable_docker_is_recorded_as_a_failed_validation) ... Configured WelcomePlugin (io.github.alex.welcome), /welcome. Run ./template validate --accept-eula.
+Template already has this identity.
+Validation evidence: /tmp/tmpjvtpzos1/build/validation/20261001T091336Z-015f5c
+ok
+test_upstream_discovery_distinguishes_beta_and_stable (test_template.TemplateToolTest.test_upstream_discovery_distinguishes_beta_and_stable) ... ok
+test_validation_rejects_exception_logs (test_template.TemplateToolTest.test_validation_rejects_exception_logs) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.031s
+
+OK

@@ -1,0 +1,22 @@
+{
+  "net.silthus.template.TemplatePluginTest": {
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      "playerNamesAndConfigurationAreLiteralText()",
+      "administratorCanReloadACustomGreeting()",
+      "malformedReloadPreservesLastWorkingSettings()",
+      "completionShowsOnlyCommandsThePlayerCanUse()",
+      "consoleInfoExplainsThatAPlayerIsRequired()",
+      "disabledGreetingSendsNoMessage()",
+      "regularPlayerCannotReloadConfiguration()",
+      "infoConvertsTicksToWholeMinutes()",
+      "statusRequiresPermissionAndReportsCurrentConfiguration()",
+      "incorrectSettingTypePreservesLastWorkingSettings()",
+      "unknownOrExtraArgumentsShowUsage()",
+      "freshInstallCreatesDefaultsAndGreetsPlayers()"
+    ]
+  }
+}
