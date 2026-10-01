@@ -98,13 +98,22 @@ def build(tasks=None):
 def artifact():
     props = properties()
     jar = ROOT / "build/libs" / f"{props['pluginName']}-{props['version']}.jar"
+    source_descriptor = (ROOT / "src/main/resources/plugin.yml").read_text()
+    entrypoint = re.search(r"^main:\s*(.+?)\s*$", source_descriptor, re.MULTILINE)
+    if not entrypoint:
+        raise RuntimeError("Source descriptor must declare a main entrypoint.")
+    main_class = entrypoint.group(1).strip("'\"")
+    for key, value in props.items():
+        main_class = main_class.replace("${" + key + "}", value)
     with zipfile.ZipFile(jar) as archive:
         names = archive.namelist()
         descriptor = archive.read("plugin.yml").decode()
         for key, value in {"name": props["pluginName"], "version": props["version"],
-                           "main": props["packageName"] + ".TemplatePlugin", "api-version": props["apiVersion"]}.items():
+                           "main": main_class, "api-version": props["apiVersion"]}.items():
             if not re.search(rf"^{re.escape(key)}: ['\"]?{re.escape(value)}['\"]?$", descriptor, re.MULTILINE):
                 raise RuntimeError(f"Packaged descriptor has the wrong {key}.")
+        if main_class.replace(".", "/") + ".class" not in names:
+            raise RuntimeError("Packaged entrypoint class is missing from the jar.")
         forbidden = [name for name in names if name.startswith(("org/bukkit/", "io/papermc/paper/",
                       "org/junit/", "org/mockbukkit/")) or name.endswith("Test.class")]
         if forbidden or "${" in descriptor:
@@ -154,6 +163,8 @@ def owned_container(name):
 
 
 def server_start(name, data, jar, profile, *, publish=None, online=True):
+    if run(["docker", "inspect", name], capture=True, check=False).returncode == 0:
+        raise RuntimeError(f"Container {name} already exists. Inspect it before starting another server.")
     data.mkdir(parents=True, exist_ok=True)
     server = paper_jar(profile)
     command = ["docker", "run", "--detach", "--name", name,
@@ -173,12 +184,22 @@ def server_start(name, data, jar, profile, *, publish=None, online=True):
             "biome": "minecraft:plains", "structure_overrides": []}),
         "SPAWN_PROTECTION": "0", "ENABLE_QUERY": "FALSE", "ENABLE_ROLLING_LOGS": "true",
     }
+    if not online:
+        env["JVM_OPTS"] = "-Dpaper.disableStartupVersionCheck"
     for key, value in env.items():
         command.extend(["--env", f"{key}={value}"])
     if publish:
         command.extend(["--publish", f"{publish}:25565"])
     command.append(config()["server_image"])
-    run(command, capture=True)
+    try:
+        run(command, capture=True)
+    except (RuntimeError, OSError, subprocess.TimeoutExpired):
+        inspection = run(["docker", "inspect", name], capture=True, check=False)
+        if inspection.returncode == 0:
+            details = owned_container(name)
+            if not details["State"]["Running"]:
+                run(["docker", "rm", name], capture=True)
+        raise
 
 
 def wait_server(name, timeout):
@@ -216,7 +237,8 @@ def validate_server(profile, report_dir, jar, default_enabled, timeout):
     props = properties()
     name = "paper-validate-" + uuid.uuid4().hex[:12]
     data = report_dir / profile / "data"
-    report = {"profile": profile, "pin": config()["servers"][profile], "checks": [], "status": "running"}
+    report = {"profile": profile, "pin": config()["servers"][profile], "checks": [], "status": "running",
+              "startup_update_check": False}
     phase = "fresh"
     phase_logs = []
     started = False
@@ -307,10 +329,14 @@ def validate_server(profile, report_dir, jar, default_enabled, timeout):
         started = True
         wait_server(name, timeout)
         expect("plugins", props["pluginName"])
-        content = stop_and_capture(expected_invalid=True)
+        startup_log = run(["docker", "logs", name], capture=True)
+        content = startup_log.stdout + startup_log.stderr
+        if f"Disabling {props['pluginName']} v{props['version']}" not in content:
+            raise RuntimeError("Invalid configuration did not disable the plugin before shutdown.")
         if "Invalid configuration: greeting.message must be a nonempty string" not in content:
             raise RuntimeError("Invalid startup did not explain its configuration error.")
-        report["checks"].append({"phase": phase, "check": "invalid configuration disables the plugin", "result": "passed"})
+        report["checks"].append({"phase": phase, "check": "invalid configuration disables the plugin", "before_shutdown": True, "result": "passed"})
+        stop_and_capture(expected_invalid=True)
         remove()
         started = False
         phase = "recovery"

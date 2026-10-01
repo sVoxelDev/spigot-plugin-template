@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "entrypoint": "io.github.alex.welcome.WelcomePlugin",
+  "local_server": {
+    "occupied_port": {
+      "exit_code": 1,
+      "output": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \nReusing configuration cache.\n> Task :processTestResources NO-SOURCE\n> Task :processResources UP-TO-DATE\n> Task :sourcesJar UP-TO-DATE\n> Task :compileJava UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :jar UP-TO-DATE\n> Task :compileTestJava UP-TO-DATE\n> Task :testClasses UP-TO-DATE\n> Task :javadoc UP-TO-DATE\n> Task :javadocJar UP-TO-DATE\n> Task :assemble UP-TO-DATE\n> Task :test UP-TO-DATE\n> Task :check UP-TO-DATE\n> Task :build UP-TO-DATE\n> Task :jacocoTestReport UP-TO-DATE\n\nBUILD SUCCESSFUL in 6s\n9 actionable tasks: 9 up-to-date\nConfiguration cache entry reused.\nPicked up JAVA_TOOL_OPTIONS: -Djava.util.prefs.userRoot=/tmp/paper-plugin-prefs\nERROR: Command failed (125): docker run --detach\n5468cbe7e5d9ff138bbbe3c3a9db896cc3036aa35979fa320ca1864d7a8888f7\ndocker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint paper-dev-fe0d37ee3e85 (05a3798a46d619e433a387a143704301c0fb331936b3960214be5dec1d2d4a60): failed to bind host port 127.0.0.1:25569/tcp: address already in use\n\nRun 'docker run --help' for more information\n\n",
+      "containers": [],
+      "state_recorded": false
+    },
+    "first_start": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \nReusing configuration cache.\n> Task :processTestResources NO-SOURCE\n> Task :processResources UP-TO-DATE\n> Task :sourcesJar UP-TO-DATE\n> Task :compileJava UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :jar UP-TO-DATE\n> Task :compileTestJava UP-TO-DATE\n> Task :testClasses UP-TO-DATE\n> Task :javadoc UP-TO-DATE\n> Task :javadocJar UP-TO-DATE\n> Task :assemble UP-TO-DATE\n> Task :test UP-TO-DATE\n> Task :check UP-TO-DATE\n> Task :build UP-TO-DATE\n> Task :jacocoTestReport UP-TO-DATE\n\nBUILD SUCCESSFUL in 3s\n9 actionable tasks: 9 up-to-date\nConfiguration cache entry reused.\nWaiting for paper-dev-fe0d37ee3e85 to become healthy...\nWelcomePlugin v1.0.0-SNAPSHOT. Greeting: enabled.\n\u001b[0m\nPaper 26.2 (STABLE) at localhost:25569\nUse ./template rcon <command>, ./template logs, and ./template down.\n",
+    "port_bindings": {
+      "25565/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "25569"
+        }
+      ]
+    },
+    "changed_status": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\n",
+    "restart": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \nReusing configuration cache.\n> Task :processTestResources NO-SOURCE\n> Task :processResources UP-TO-DATE\n> Task :sourcesJar UP-TO-DATE\n> Task :compileJava UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :jar UP-TO-DATE\n> Task :compileTestJava UP-TO-DATE\n> Task :testClasses UP-TO-DATE\n> Task :javadoc UP-TO-DATE\n> Task :javadocJar UP-TO-DATE\n> Task :assemble UP-TO-DATE\n> Task :test UP-TO-DATE\n> Task :check UP-TO-DATE\n> Task :build UP-TO-DATE\n> Task :jacocoTestReport UP-TO-DATE\n\nBUILD SUCCESSFUL in 3s\n9 actionable tasks: 9 up-to-date\nConfiguration cache entry reused.\nWaiting for paper-dev-fe0d37ee3e85 to become healthy...\nWelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\nPaper 26.2 (STABLE) at localhost:25569\nUse ./template rcon <command>, ./template logs, and ./template down.\n",
+    "persisted_status": "WelcomePlugin v1.0.0-SNAPSHOT. Greeting: disabled.\n\u001b[0m\n",
+    "preserved_reports": 30
+  }
+}

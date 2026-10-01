@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import socket
 import subprocess
 import tempfile
 
@@ -36,6 +37,17 @@ def exercise_local_server(project):
     port = "25569"
     evidence = {}
     try:
+        with socket.socket() as occupied:
+            occupied.bind(("127.0.0.1", int(port)))
+            occupied.listen()
+            failure = subprocess.run([str(project / "template"), "up", "--accept-eula", "--profile", "stable", "--port", port],
+                                     cwd=project, text=True, capture_output=True)
+            remaining = subprocess.run(["docker", "ps", "-aq", "--filter", f"label=paper-template.checkout={project}"],
+                                       text=True, capture_output=True, check=True).stdout.strip()
+            if failure.returncode == 0 or remaining or (project / ".template/dev.json").exists():
+                raise RuntimeError("Failed port binding must leave no container or development state.")
+            evidence["occupied_port"] = {"exit_code": failure.returncode, "output": failure.stdout + failure.stderr,
+                                         "containers": [], "state_recorded": False}
         evidence["first_start"] = run(project, "up", "--accept-eula", "--profile", "stable", "--port", port, capture=True).stdout
         state = json.loads((project / ".template/dev.json").read_text())
         container = state["container"]
@@ -92,6 +104,15 @@ def main():
             workflow["doctor"] = json.loads(run(project, "doctor", capture=True).stdout)
             for _ in range(2):
                 run(project, "init", "--name", "WelcomePlugin", "--package", "io.github.alex.welcome", "--command", "welcome", "--author", "Alex")
+            for path in project.glob("src/**/*.java"):
+                text = path.read_text()
+                if "TemplatePlugin" in text:
+                    path.write_text(text.replace("TemplatePlugin", "WelcomePlugin"))
+                    if "TemplatePlugin" in path.name:
+                        path.rename(path.with_name(path.name.replace("TemplatePlugin", "WelcomePlugin")))
+            descriptor = project / "src/main/resources/plugin.yml"
+            descriptor.write_text(descriptor.read_text().replace(".TemplatePlugin", ".WelcomePlugin"))
+            workflow["entrypoint"] = "io.github.alex.welcome.WelcomePlugin"
             invalid = subprocess.run([str(project / "template"), "init", "--name", "../Bad", "--package", "io.github.alex.welcome", "--command", "welcome", "--author", "Alex"], cwd=project)
             if invalid.returncode == 0:
                 raise RuntimeError("Invalid plugin identity was accepted.")

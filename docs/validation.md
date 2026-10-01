@@ -29,3 +29,15 @@ The independent behavior report remains in `build/independent-validation/behavio
 [The first complete hosted run](https://github.com/sVoxelDev/spigot-plugin-template/actions/runs/36826690576) passed build, both server profiles, and personalized-plugin validation. Its downloaded jar checksum matches the local jar. [Current branch checks](https://github.com/sVoxelDev/spigot-plugin-template/actions?query=branch%3At3code%2Fmodernize-plugin-template) rerun those gates and the expanded local-server workflow after the final tooling fixes. Workflow artifacts contain full reports and logs; the committed files above preserve the command results and relevant lifecycle evidence.
 
 Player greetings, permissions, and playtime are MockBukkit tests. No real player login or client gameplay was exercised. The latest Paper profile is beta. Remote deployment, tagged release creation, GitHub Packages, and the external JitPack service were not executed. Local Maven publication is checked separately. Merging and external deployment require the user's approval.
+
+## GPT-6.1 Sol review follow-up
+
+An independent GPT-6.1 Sol review covered the complete PR and found three P2 defects. All three are fixed:
+
+- A failed port binding left a created container without development state. Startup now removes its owned nonrunning container on failure and refuses to replace a preexisting container. The real agent workflow reserves the port, checks failure leaves no container/state, releases it, and starts successfully on the same port.
+- Invalid-startup validation could confuse normal shutdown with configuration disablement. It now checks the disable log before initiating shutdown. A focused simulated-server test rejects a plugin that only disables during shutdown; actual server reports record `before_shutdown: true`.
+- Validation assumed the entry class was always `TemplatePlugin`. It now compares the packaged descriptor with the source descriptor and requires the declared class in the jar. The agent workflow renames the actual Java class and descriptor to `WelcomePlugin`, builds it, and validates both servers.
+
+[The reviewed tooling suite has 13 passing tests](validation/2026-10-01/review-tooling-tests.txt). After the fixes, [TemplatePlugin](validation/2026-10-01/review-template.json) and [the renamed WelcomePlugin](validation/2026-10-01/review-welcome.json) each pass all 16 checks on both pinned Paper builds. [The real local workflow](validation/2026-10-01/review-workflow.json) proves occupied-port recovery, private RCON, localhost binding, persisted restart, retention of 30 report files, and cleanup. The template jar checksum remains unchanged.
+
+The first rerun correctly failed because Paper's background update checker logged HTTP 503/timeouts from its release API. Isolated validation servers now use Paper's [documented `-Dpaper.disableStartupVersionCheck` option](https://docs.papermc.io/paper/misc/update-checker/). Their reports record this setting. Artifact checksum verification, actual server-build checks, and plugin-error rejection remain enabled; playable development servers retain update checks.
