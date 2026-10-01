@@ -1,119 +1,90 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id 'kr.entree.spigradle' version '2.4.3'
-    id 'io.freefair.lombok' version '6.6.1'
     id 'java'
     id 'jacoco'
-    id 'idea'
+    id 'maven-publish'
 }
 
-apply from: "$rootDir/gradle/jacoco.gradle"
-apply from: "$rootDir/gradle/publish.gradle"
+group = providers.gradleProperty('group').get()
+version = providers.gradleProperty('version').get()
 
-if (project.hasProperty("local_script")) {
-    apply from: file(local_script + "/build.local.gradle")
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(providers.gradleProperty('javaVersion').get().toInteger())
+    withSourcesJar()
+    withJavadocJar()
 }
-
-sourceCompatibility = 17
-targetCompatibility = 17
-
-ext {
-    mcVersion = project.property("mcVersion")
-}
-
-group project.property("group")
-
-spigot {
-    name = project.property("pluginName")
-    authors = [project.property("author")]
-    apiVersion = project.property("apiVersion")
-    load = STARTUP
-    // depends = ['']
-    softDepends = ['Vault']
-    excludeLibraries = ['*']
-}
-
-compileJava {
-    options.encoding = 'UTF-8'
-    options.compilerArgs += ["-parameters"]
-    options.fork = true
-    options.forkOptions.executable = 'javac'
-    options.compilerArgs += [
-        '--release', '17',
-        '-Xlint:deprecation'
-    ]
-}
-
-archivesBaseName = project.property("pluginName")
 
 repositories {
-    mavenLocal()
     mavenCentral()
-    spigot()
-    bungeecord()
-    paper()
-    essentialsX()
-    bStats()
-    enginehub()
-    protocolLib()
-    maven { url = 'https://repo.aikar.co/content/groups/aikar/' }
-    jitpack()
+    maven {
+        name = 'papermc'
+        url = uri('https://repo.papermc.io/repository/maven-public/')
+        content { includeGroupByRegex 'io\\.papermc.*'; includeGroup 'net.md-5'; includeGroup 'com.mojang' }
+    }
 }
 
 dependencies {
-    // using using paper-api
-    implementation paper(mcVersion)
-
-    // Add your dependencies here
-    // Here are some opinionated dependencies that might help you with your plugin development:
-
-    // Annotation Command Framework: https://github.com/aikar/commands
-    // Use shadow to shade the library into your plugin
-    shadow "co.aikar:acf-paper:0.5.1-SNAPSHOT"
-    // Vault (https://github.com/MilkBowl/VaultAPI) for economy, permissions and chat API
-    // this dependency needs to be present at runtime, meaning Vault.jar needs to be in your plugins folder
-    implementation vaultAll()
-
-    // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.144.3'
-    testImplementation 'org.assertj:assertj-core:3.24.1'
+    compileOnly "io.papermc.paper:paper-api:${paperApiVersion}"
+    testImplementation "io.papermc.paper:paper-api:${paperApiVersion}"
+    testImplementation "org.mockbukkit.mockbukkit:mockbukkit-v26.2:${mockBukkitVersion}"
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-shadowJar {
-    classifier = ''
-    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
-    relocate 'co.aikar.commands', "${packageName}.acf"
-    relocate 'co.aikar.locales', "${packageName}.locales"
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = providers.gradleProperty('javaVersion').map { it.toInteger() }
+    options.compilerArgs.addAll(['-Xlint:all', '-Werror'])
 }
 
-tasks.build.dependsOn(shadowJar)
-tasks.publish.dependsOn(shadowJar)
-tasks.prepareSpigotPlugins.dependsOn(shadowJar)
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
 
-test {
+tasks.named('jar') {
+    archiveBaseName = pluginName
+}
+
+tasks.named('processResources') {
+    def metadata = [pluginName: pluginName, version: version, author: author,
+                    packageName: packageName, apiVersion: apiVersion, commandName: commandName]
+    inputs.properties(metadata)
+    filesMatching('plugin.yml') { expand(metadata) }
+}
+
+tasks.named('test') {
     useJUnitPlatform()
-    testLogging {
-        events "skipped", "failed"
-        exceptionFormat = 'full'
-        showStandardStreams = true
-    }
-    
-    // Add this to ensure test dependencies are available
-    systemProperty 'java.class.path', sourceSets.test.runtimeClasspath.asPath
+    testLogging { events 'failed', 'skipped'; exceptionFormat = 'full' }
+    finalizedBy tasks.named('jacocoTestReport')
 }
 
-processResources {
-    project.properties.put("version", this.version)
-    expand project.properties
+jacoco { toolVersion = jacocoVersion }
+
+tasks.named('jacocoTestReport') {
+    dependsOn tasks.named('test')
+    reports { xml.required = true; html.required = true }
+}
+
+tasks.named('javadoc') {
+    options.encoding = 'UTF-8'
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+}
+
+publishing {
+    publications {
+        plugin(MavenPublication) { from components.java }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri("https://maven.pkg.github.com/${System.getenv('GITHUB_REPOSITORY') ?: 'sVoxelDev/spigot-plugin-template'}")
+            credentials {
+                username = providers.gradleProperty('gpr.user').orElse(providers.environmentVariable('GITHUB_ACTOR')).orNull
+                password = providers.gradleProperty('gpr.key').orElse(providers.environmentVariable('GITHUB_TOKEN')).orNull
+            }
+        }
+    }
 }
 
 defaultTasks 'build'

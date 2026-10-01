@@ -1,3 +1,15 @@
+## Unreleased
+
+### Paper template baseline
+
+- Target Java 25 and the stable Paper 26.2 API; validate Paper 26.3 beta and 26.2 stable.
+- Replace the old framework integrations with native commands and configurable Adventure greetings.
+- Add Docker build/server tooling, focused behavior tests, personalization, and repeatable agent workflow validation.
+- Add agent instructions, a setup skill, one-prompt examples, and deployment instructions.
+- Replace the obsolete release tooling with tested tag-based GitHub releases.
+
+This is a major template migration. See [Readme.md](Readme.md#migrating-from-the-spigot-template).
+
 ## [4.5.3](https://github.com/sVoxelDev/spigot-plugin-template/compare/v4.5.2...v4.5.3) (2022-07-27)
 
 

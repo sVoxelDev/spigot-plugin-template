@@ -1,116 +1,126 @@
-name: Build
-on: [push]
+name: Validate
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
-    # We want to run on external PRs, but not on our own internal PRs as they'll be run
-    # by the push to the branch.
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
-
+    timeout-minutes: 15
+    outputs:
+      profiles: ${{ steps.profiles.outputs.profiles }}
     steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
-          java-version: 17
-
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
+          python-version: '3.13'
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
-
-      - name: Build
-        run: ./gradlew build -x test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+          path: .gradle-user-home
+          key: gradle-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.gradle', 'gradle.properties', 'gradle/wrapper/gradle-wrapper.properties') }}
+      - id: profiles
+        run: |
+          python3 - <<'PYTHON'
+          import json, os
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('profiles=' + json.dumps(list(json.load(open('template.json'))['servers'])) + '\n')
+          PYTHON
+      - name: Check release version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          python3 - <<'PYTHON'
+          import os
+          properties = dict(line.strip().split('=', 1) for line in open('gradle.properties') if '=' in line)
+          if properties['version'] != os.environ['GITHUB_REF_NAME'][1:]:
+              raise SystemExit('Release tag must match version in gradle.properties')
+          PYTHON
+      - name: Build and test
+        run: ./template build
+      - name: Test validation tooling
+        run: python3 -m unittest discover -s scripts/tests -v
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          path: '**/build/libs'
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
-        with:
-          java-version: 17
-
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
-
-      - name: Test
-        run: ./gradlew test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Coverage
-        run: ./gradlew jacocoTestReport
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload CodeCov Report
-        uses: codecov/codecov-action@v3
-        with:
-          file: '**/build/reports/jacoco/**/*.xml'
-
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.24
+          name: plugin-jars
+          path: build/libs/*.jar
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
-          files: '**/build/test-results/**/*.xml'
+          name: test-reports
+          path: |
+            build/reports/tests/
+            build/test-results/
+            build/reports/jacoco/
+
+  servers:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: ${{ fromJSON(needs.build.outputs.profiles) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: plugin-jars
+          path: build/libs
+      - name: Validate real Paper
+        run: ./template validate --accept-eula --skip-build --profile '${{ matrix.profile }}'
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: paper-${{ matrix.profile }}-validation
+          path: |
+            build/validation/latest.json
+            build/validation/*/results.json
+            build/validation/*/*/results.json
+            build/validation/*/*/*.log
+          if-no-files-found: error
+
+  agent-workflow:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - name: Validate personalized plugin workflow
+        run: python3 scripts/agent-test.py --accept-eula
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: agent-workflow-validation
+          path: build/agent-validation/
+          if-no-files-found: error
 
   release:
-    needs: [build, test]
-    if: github.ref == 'refs/heads/master' || 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
-
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build, servers, agent-workflow]
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
-          java-version: 17
-
-      - name: Set up Node.js v16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle
-          key: ${{ runner.os }}-gradle
-
-      - uses: actions/checkout@v3
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Grant execute permission for update-versions.sh
-        run: chmod +x update-versions.sh
-
-      - name: Release
+          name: plugin-jars
+          path: jars
+      - name: Publish validated release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_URL: 'https://api.github.com/'
-        run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p gradle-semantic-release-plugin -p semantic-release semantic-release
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: gh release create "$RELEASE_TAG" jars/*.jar --verify-tag --generate-notes

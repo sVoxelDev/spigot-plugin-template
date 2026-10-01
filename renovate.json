@@ -1,20 +1,19 @@
 {
-  "extends": ["config:base"],
-  "gradle": {
-    "enabled": true
-  },
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "docker:pinDigests", "helpers:pinGitHubActionDigests"],
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch"
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "compatible dependency updates"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^template\\.json$/"],
+      "matchStrings": ["\"(?:build_image|server_image)\": \"(?<depName>[^\"]+):(?<currentValue>[^@\"]+)@(?<currentDigest>sha256:[a-f0-9]+)\""],
+      "datasourceTemplate": "docker"
     }
   ]
 }

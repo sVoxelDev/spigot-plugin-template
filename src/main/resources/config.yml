@@ -1,1 +1,3 @@
-# add your configuration properties here
+greeting:
+  enabled: true
+  message: 'Welcome, {player}!'
